@@ -1,109 +1,113 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Gamepad2 } from 'lucide-react';
 
-const links = [
+const NAV_LINKS = [
   { label: 'Performance', href: '#performance' },
-  { label: 'Features', href: '#features' },
-  { label: 'Capabilities', href: '#capabilities' },
-  { label: 'Specs', href: '#specs' },
+  { label: 'Features',    href: '#features'    },
+  { label: 'Capabilities',href: '#capabilities' },
+  { label: 'Compare',     href: '#compare'      },
+  { label: 'Specs',       href: '#specs'        },
 ];
+
+function scrollTo(href) {
+  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const handler = () => setScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const handleLink = (href) => {
+  const handleLink = (e, href) => {
+    e.preventDefault();
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    scrollTo(href);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled ? 'glass-nav' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <a
-            href="#"
-            className="flex items-center gap-3 group"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          >
-            <div className="w-8 h-8 rounded-full bg-[#107C10] flex items-center justify-center flex-shrink-0">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white" aria-hidden="true">
-                <path d="M4.102 21.033C6.211 22.881 8.977 24 12 24c3.026 0 5.789-1.119 7.902-2.967 1.877-1.637-4.316-7.048-7.902-10.524-3.584 3.476-9.779 8.887-7.898 10.524zm11.16-14.406c2.5 2.961 7.484 9.375 6.924 12.625A11.942 11.942 0 0 0 24 12.004a11.95 11.95 0 0 0-3.57-8.536s-.027-.023-.082-.059c-.295-.204-1.047-.479-2.083.172-.508.32-1.378 1.004-3.003 3.046zM3.654 3.41c-.056.036-.082.059-.082.059A11.95 11.95 0 0 0 0 12.004c0 2.854.998 5.473 2.652 7.533.017-3.058 4.686-9.04 7.228-12.351-1.624-2.042-2.494-2.726-3.003-3.046-1.036-.651-1.788-.376-2.083-.172-.001 0-.141-.143-.14-.558zM12 0C9.15 0 6.498.841 4.277 2.272c.076.164.23.421.537.621.482.311 1.414.685 2.912-.173.395-.224.906-.361 1.274.095L12 5.763l3-2.948c.368-.456.879-.319 1.274-.095 1.498.858 2.43.484 2.912.173.307-.2.461-.457.537-.621C17.502.841 14.85 0 12 0z" />
-              </svg>
-            </div>
-            <span className="text-[#f0f0f0] font-semibold text-sm tracking-widest uppercase">
-              Xbox Series X
-            </span>
-          </a>
+      <div className="container flex items-center justify-between h-16">
 
-          {/* Desktop links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleLink(link.href); }}
-                className="text-[#8a8a8a] hover:text-[#f0f0f0] text-sm font-medium tracking-wide transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA */}
-          <div className="hidden md:block">
-            <a
-              href="#specs"
-              onClick={(e) => { e.preventDefault(); handleLink('#specs'); }}
-              className="px-5 py-2.5 bg-[#107C10] hover:bg-[#0d6a0d] text-white text-sm font-medium rounded-sm transition-colors duration-200 tracking-wide"
-            >
-              Explore Specs
-            </a>
+        {/* ── Logo ── */}
+        <a
+          href="#"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          className="flex items-center gap-2.5 group"
+          aria-label="Xbox Series X — home"
+        >
+          <div className="w-7 h-7 rounded-[4px] bg-[#107C10] flex items-center justify-center flex-shrink-0">
+            <Gamepad2 size={14} className="text-white" strokeWidth={2} />
           </div>
+          <span className="text-[#EFEFEF] font-semibold text-[13px] tracking-[0.12em] uppercase">
+            Xbox <span className="text-[#404040]">Series X</span>
+          </span>
+        </a>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-[#8a8a8a] hover:text-[#f0f0f0] transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+        {/* ── Desktop links ── */}
+        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => handleLink(e, l.href)}
+              className="text-[#555] hover:text-[#EFEFEF] text-[12px] font-medium tracking-[0.12em] uppercase transition-colors duration-200"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* ── Desktop CTA ── */}
+        <a
+          href="#specs"
+          onClick={(e) => handleLink(e, '#specs')}
+          className="btn-primary hidden md:inline-flex"
+          style={{ padding: '9px 20px', fontSize: '12px' }}
+        >
+          Full Specs
+        </a>
+
+        {/* ── Mobile toggle ── */}
+        <button
+          className="md:hidden text-[#7A7A7A] hover:text-[#EFEFEF] transition-colors p-1"
+          onClick={() => setOpen((o) => !o)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+        >
+          {open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+        </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* ── Mobile drawer ── */}
       {open && (
-        <div className="md:hidden glass-nav border-t border-white/5">
-          <nav className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5">
-            {links.map((link) => (
+        <div className="md:hidden glass-nav border-t border-white/[0.04]">
+          <nav className="container py-8 flex flex-col gap-5" aria-label="Mobile navigation">
+            {NAV_LINKS.map((l) => (
               <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleLink(link.href); }}
-                className="text-[#c0c0c0] hover:text-[#f0f0f0] text-base font-medium tracking-wide transition-colors duration-200"
+                key={l.href}
+                href={l.href}
+                onClick={(e) => handleLink(e, l.href)}
+                className="text-[#7A7A7A] hover:text-[#EFEFEF] text-sm font-medium tracking-[0.1em] uppercase transition-colors duration-200"
               >
-                {link.label}
+                {l.label}
               </a>
             ))}
-            <div className="pt-2 border-t border-white/5">
+            <div className="pt-5 border-t border-white/[0.04]">
               <a
                 href="#specs"
-                onClick={(e) => { e.preventDefault(); handleLink('#specs'); }}
-                className="inline-block px-5 py-2.5 bg-[#107C10] hover:bg-[#0d6a0d] text-white text-sm font-medium rounded-sm transition-colors duration-200 tracking-wide"
+                onClick={(e) => handleLink(e, '#specs')}
+                className="btn-primary"
               >
-                Explore Specs
+                Full Specs
               </a>
             </div>
           </nav>
