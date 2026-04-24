@@ -12,7 +12,7 @@
   body {
     margin: 0;
     background-color: #080808;
-    color: #f0f0f0;
+    color: #EFEFEF;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,102 +20,198 @@
   }
 
   ::selection {
-    background: rgba(16, 124, 16, 0.35);
-    color: #f0f0f0;
+    background: rgba(16, 124, 16, 0.3);
+    color: #EFEFEF;
   }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #107C10; }
 }
 
+/* ─── Design tokens ─────────────────────────────────────────── */
+:root {
+  --c-bg:        #080808;
+  --c-surface:   #0D0D0D;
+  --c-elevated:  #141414;
+  --c-card:      #181818;
+  --c-border:    rgba(255, 255, 255, 0.055);
+  --c-border-g:  rgba(16, 124, 16, 0.22);
+  --c-green:     #107C10;
+  --c-green-lt:  #4CAF50;
+  --c-green-dim: rgba(16, 124, 16, 0.08);
+  --c-text-1:    #EFEFEF;
+  --c-text-2:    #7A7A7A;
+  --c-text-3:    #404040;
+}
+
+/* ─── Utility classes ───────────────────────────────────────── */
 @layer utilities {
+  /* Label / overline */
+  .label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-green);
+  }
+
+  /* Text gradient – white fade */
   .text-gradient {
-    background: linear-gradient(160deg, #ffffff 0%, #8a8a8a 100%);
+    background: linear-gradient(170deg, #ffffff 20%, #505050 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* Text gradient – green */
   .text-gradient-green {
-    background: linear-gradient(135deg, #107C10 0%, #1db81d 100%);
+    background: linear-gradient(135deg, #4CAF50 0%, #107C10 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* Frosted nav */
   .glass-nav {
-    background: rgba(8, 8, 8, 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(8, 8, 8, 0.92);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-bottom: 1px solid var(--c-border);
   }
 
-  .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  /* Card surface */
+  .card {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    transition:
+      border-color  0.3s ease,
+      background    0.3s ease,
+      transform     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card:hover {
+    border-color: var(--c-border-g);
+    background: #1C1C1C;
+    transform: translateY(-2px);
   }
 
-  .glass-card-hover {
-    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Icon box */
+  .icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background: var(--c-green-dim);
+    border: 1px solid var(--c-border-g);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--c-green-lt);
   }
 
-  .glass-card-hover:hover {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(16, 124, 16, 0.25);
-    transform: translateY(-3px);
+  /* Horizontal rule */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--c-border), transparent);
   }
 
-  .accent-line {
-    width: 32px;
-    height: 2px;
-    background: #107C10;
-  }
-
-  .stat-number {
+  /* Stat number – tabular */
+  .stat-num {
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
     letter-spacing: -0.04em;
   }
 
-  .section-label {
-    font-size: 0.6875rem;
+  /* Primary button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--c-green);
+    color: #fff;
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #107C10;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover {
+    background: #0d6a0d;
+    transform: translateY(-1px);
   }
 
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  /* Ghost button */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--c-text-2);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--c-border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.18);
+    color: var(--c-text-1);
+  }
+
+  /* Section container */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  @media (min-width: 1024px) {
+    .container { padding: 0 48px; }
+  }
+
+  /* Section vertical rhythm */
+  .section-pad {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  @media (max-width: 768px) {
+    .section-pad {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
   }
 }
 
+/* ─── Animations ────────────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+@keyframes scrollDown {
+  0%  { transform: translateY(0); opacity: 0.6; }
+  60% { transform: translateY(8px); opacity: 0.2; }
+  100%{ transform: translateY(0); opacity: 0.6; }
 }
 
-.animate-fade-up-delay-1 {
-  animation: fadeUp 0.8s 0.15s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.animate-fade-up-delay-2 {
-  animation: fadeUp 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.animate-fade-up-delay-3 {
-  animation: fadeUp 0.8s 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.animate-fade-in {
-  animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
+.anim-fade-up   { animation: fadeUp 0.75s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-fade-up-1 { animation: fadeUp 0.75s 0.12s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-fade-up-2 { animation: fadeUp 0.75s 0.24s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-fade-up-3 { animation: fadeUp 0.75s 0.38s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-fade-up-4 { animation: fadeUp 0.75s 0.52s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-fade-in   { animation: fadeIn 1.1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.anim-scroll    { animation: scrollDown 2s ease-in-out infinite; }

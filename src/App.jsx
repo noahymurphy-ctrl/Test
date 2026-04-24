@@ -1,11 +1,12 @@
 import './index.css';
-import Nav from './components/Nav';
-import Hero from './components/Hero';
-import Performance from './components/Performance';
-import Features from './components/Features';
+import Nav          from './components/Nav';
+import Hero         from './components/Hero';
+import Performance  from './components/Performance';
+import Features     from './components/Features';
 import Capabilities from './components/Capabilities';
-import Specs from './components/Specs';
-import Footer from './components/Footer';
+import Comparison   from './components/Comparison';
+import Specs        from './components/Specs';
+import Footer       from './components/Footer';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Performance />
         <Features />
         <Capabilities />
+        <Comparison />
         <Specs />
       </main>
       <Footer />
