@@ -1,150 +1,152 @@
-import { useEffect, useRef, useState } from 'react';
-import { RefreshCw, Sparkles, Globe, Gamepad2, Wifi, Film } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollAnimation';
 
-const features = [
+const flavors = [
   {
-    icon: RefreshCw,
-    title: 'Quick Resume',
-    subtitle: 'Multi-game suspend',
-    body: 'Instantly switch between multiple titles — right where you left off — without a single loading screen. No waiting, no replaying, no interruption.',
+    emoji: '🌶️',
+    name: 'Ghost Pepper Fire',
+    tagline: 'For those who dare',
+    description: 'Scorching ghost pepper broth with a deep smoky base. This one bites back.',
+    heat: 5,
+    badge: 'ULTRA SPICY',
+    badgeColor: 'var(--red)',
+    bg: 'linear-gradient(160deg, #2E0808 0%, #1A0404 100%)',
+    accent: 'var(--red)',
+    pips: 'on-red',
   },
   {
-    icon: Sparkles,
-    title: 'Auto HDR',
-    subtitle: 'Automatic enhancement',
-    body: 'Thousands of backward-compatible games automatically receive a richer, more vibrant HDR color palette — no developer patches required.',
+    emoji: '🍜',
+    name: 'Spicy Miso',
+    tagline: 'Bold & balanced',
+    description: 'Fermented miso paste, chili oil, and a clean umami depth that keeps you coming back.',
+    heat: 3,
+    badge: 'BEST SELLER',
+    badgeColor: 'var(--orange)',
+    bg: 'linear-gradient(160deg, #2A1200 0%, #180900 100%)',
+    accent: 'var(--orange)',
+    pips: 'on-orange',
   },
   {
-    icon: Globe,
-    title: 'Smart Delivery',
-    subtitle: 'Buy once, play best',
-    body: 'Purchase a game once and automatically receive the most optimized version for your hardware — current or next generation.',
+    emoji: '🥩',
+    name: 'Tonkotsu Gold',
+    tagline: 'Rich & creamy',
+    description: 'Slow-simmered pork bone richness, silky broth, and a whisper of roasted garlic.',
+    heat: 1,
+    badge: 'NEW',
+    badgeColor: 'var(--gold)',
+    bg: 'linear-gradient(160deg, #1E1100 0%, #110A00 100%)',
+    accent: 'var(--gold)',
+    pips: 'on-gold',
   },
   {
-    icon: Gamepad2,
-    title: 'Backward Compatibility',
-    subtitle: 'Four generations, one console',
-    body: 'Play thousands of Xbox One, Xbox 360, and original Xbox games with enhanced resolution, frame rate, and load time improvements.',
-  },
-  {
-    icon: Wifi,
-    title: 'Xbox Game Pass',
-    subtitle: 'Over 100 premium titles',
-    body: 'Access a curated library of over 100 high-quality games — including every first-party Microsoft Studios title on day one of release.',
-  },
-  {
-    icon: Film,
-    title: 'DirectX Raytracing',
-    subtitle: 'Hardware-accelerated RT',
-    body: 'Real-time raytracing renders light, shadow, and reflection with cinematic realism — powered by dedicated hardware within the GPU.',
+    emoji: '🧄',
+    name: 'Black Garlic',
+    tagline: 'Dark & complex',
+    description: 'Aged black garlic delivers caramel-like sweetness with an earthy, intense finish.',
+    heat: 2,
+    badge: 'FAN FAVORITE',
+    badgeColor: 'var(--pink)',
+    bg: 'linear-gradient(160deg, #1A0820 0%, #0E0412 100%)',
+    accent: 'var(--pink)',
+    pips: 'on-pink',
   },
 ];
 
-function FeatureCard({ icon: Icon, title, subtitle, body, index }) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.12 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className="group"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(20px)',
-        transition: `opacity 0.6s ${index * 0.07}s ease, transform 0.6s ${index * 0.07}s ease`,
-      }}
-    >
-      <div className="glass-card glass-card-hover rounded-sm p-7 h-full flex flex-col">
-        <div className="flex items-center gap-4 mb-5">
-          <div className="w-9 h-9 rounded-sm bg-[rgba(16,124,16,0.08)] border border-[rgba(16,124,16,0.12)] flex items-center justify-center flex-shrink-0">
-            <Icon size={16} className="text-[#107C10]" strokeWidth={1.5} />
-          </div>
-          <div>
-            <div className="text-[#f0f0f0] font-semibold text-sm tracking-wide">{title}</div>
-            <div className="text-[#4a4a4a] text-xs font-medium tracking-wider uppercase mt-0.5">{subtitle}</div>
-          </div>
-        </div>
-
-        <div className="w-6 h-px bg-[rgba(16,124,16,0.4)] mb-5" />
-
-        <p className="text-[#6a6a6a] text-sm leading-relaxed font-light flex-1">
-          {body}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export default function Features() {
-  const headerRef = useRef(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setHeaderVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (headerRef.current) observer.observe(headerRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const [ref, visible] = useScrollReveal(0.08);
 
   return (
-    <section id="features" className="py-24 lg:py-36">
-      {/* Section background accent */}
-      <div
-        className="absolute left-0 right-0 h-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 50% 40% at 20% 50%, rgba(16,124,16,0.04) 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Divider */}
-        <div className="divider mb-20" />
-
+    <section id="flavors" style={{ padding: 'clamp(80px, 10vw, 130px) 24px', background: 'var(--bg)' }}>
+      <div ref={ref} style={{ maxWidth: 1280, margin: '0 auto' }}>
         {/* Header */}
-        <div
-          ref={headerRef}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 lg:mb-20"
-          style={{
-            opacity: headerVisible ? 1 : 0,
-            transform: headerVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.7s ease, transform 0.7s ease',
-          }}
-        >
-          <div>
-            <div className="mb-4">
-              <span className="section-label">Platform Intelligence</span>
-            </div>
-            <h2
-              className="font-black text-gradient leading-none tracking-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.04em' }}
-            >
-              Designed Around
-              <br />
-              the Player.
-            </h2>
+        <div style={{ marginBottom: 64 }}>
+          <div className={`section-label reveal ${visible ? 'show' : ''}`} style={{ marginBottom: 14 }}>
+            Flavor Lineup
           </div>
-          <p className="text-[#6a6a6a] font-light leading-relaxed lg:max-w-sm lg:text-right" style={{ fontSize: '0.95rem' }}>
-            Beyond raw power — a suite of platform technologies that quietly
-            elevate every moment of your gaming experience.
-          </p>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+            <h2 className={`reveal up d1 ${visible ? 'show' : ''}`} style={{
+              fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+              fontWeight: 900, letterSpacing: '-0.03em', margin: 0, lineHeight: 1.1,
+            }}>
+              Choose Your <span className="text-fire">Flavor.</span>
+            </h2>
+            <p className={`reveal up d2 ${visible ? 'show' : ''}`} style={{
+              color: 'var(--text3)', fontSize: '0.9rem', maxWidth: 320, marginBottom: 4,
+            }}>
+              Four distinct personalities. All with 40g protein. Zero compromise on taste.
+            </p>
+          </div>
         </div>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((f, i) => (
-            <FeatureCard key={f.title} {...f} index={i} />
+        <div className="section-divider" style={{ marginBottom: 56 }} />
+
+        {/* Cards grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
+          {flavors.map((f, i) => (
+            <div
+              key={f.name}
+              className={`flavor-card reveal up ${visible ? 'show' : ''}`}
+              style={{ transitionDelay: `${i * 0.1}s` }}
+            >
+              {/* Card hero */}
+              <div className="flavor-hero" style={{ background: f.bg }}>
+                {/* Badge */}
+                <div style={{
+                  position: 'absolute', top: 14, left: 14,
+                  background: f.badgeColor,
+                  color: f.badgeColor === 'var(--gold)' ? '#1A0800' : '#fff',
+                  fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.12em',
+                  padding: '4px 10px', borderRadius: 100,
+                  textTransform: 'uppercase',
+                }}>
+                  {f.badge}
+                </div>
+                {/* Glow circle */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: `radial-gradient(circle at 50% 60%, ${f.accent}22 0%, transparent 65%)`,
+                }} />
+                <div className="flavor-emoji">{f.emoji}</div>
+              </div>
+
+              {/* Card body */}
+              <div style={{ padding: '24px 22px 26px' }}>
+                <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text3)', marginBottom: 6 }}>
+                  {f.tagline}
+                </div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text)', margin: '0 0 10px', letterSpacing: '-0.01em' }}>
+                  {f.name}
+                </h3>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 18 }}>
+                  {f.description}
+                </p>
+
+                {/* Heat level */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text3)' }}>Heat</span>
+                  <div style={{ display: 'flex', gap: 4 }}>
+                    {[1, 2, 3, 4, 5].map((pip) => (
+                      <div
+                        key={pip}
+                        className={`heat-pip ${pip <= f.heat ? f.pips : ''}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Protein callout */}
+                <div style={{
+                  marginTop: 18,
+                  padding: '10px 14px',
+                  background: 'rgba(255,84,0,0.06)',
+                  border: '1px solid rgba(255,84,0,0.14)',
+                  borderRadius: 8,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text3)', fontWeight: 500 }}>Protein per serving</span>
+                  <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--orange)' }}>40g</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

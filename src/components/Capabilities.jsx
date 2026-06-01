@@ -1,126 +1,121 @@
-import { useEffect, useRef, useState } from 'react';
-import { TrendingUp, Volume2, Swords, Users, Shield, Headphones } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollAnimation';
 
-const capabilities = [
-  {
-    icon: TrendingUp,
-    heading: 'Variable Rate Shading',
-    text: 'Selectively applies shading detail where it matters most, freeing GPU resources for higher resolution or frame rates elsewhere in the scene.',
-  },
-  {
-    icon: Volume2,
-    heading: 'Dolby Atmos & DTS:X',
-    text: 'Native support for spatial audio formats delivers precise positional sound — critical for competitive gaming and immersive cinematic experiences.',
-  },
-  {
-    icon: Swords,
-    heading: 'Xbox Velocity Architecture',
-    text: 'A hardware-software co-design that integrates the custom SSD, decompression hardware, and DirectStorage to eliminate HDD-era world streaming limits.',
-  },
-  {
-    icon: Users,
-    heading: 'Xbox Party & Social',
-    text: 'Party chat, cross-platform clubs, and Looking for Group features keep your community connected seamlessly across consoles, PC, and mobile.',
-  },
-  {
-    icon: Shield,
-    heading: 'Xbox Play Anywhere',
-    text: 'Buy supported titles once and play on Xbox Series X or Windows PC — your saves, achievements, and progress follow you across platforms.',
-  },
-  {
-    icon: Headphones,
-    heading: 'Low-Latency Audio',
-    text: 'Hardware-accelerated audio processing with the Custom Sound Processing Unit offloads thousands of simultaneous audio sources from the CPU.',
-  },
+const ingredients = [
+  { icon: '🐟', name: 'Whey Protein Isolate', note: 'Primary protein source' },
+  { icon: '🌾', name: 'Rice Noodles', note: 'Gluten-free option' },
+  { icon: '🧅', name: 'Dehydrated Shallots', note: 'Real aromatics' },
+  { icon: '🧄', name: 'Roasted Garlic', note: 'Slow-roasted' },
+  { icon: '🫚', name: 'Sesame Oil', note: 'Cold-pressed' },
+  { icon: '🧂', name: 'Sea Salt', note: 'Mineral-rich' },
+  { icon: '🌿', name: 'Dried Scallions', note: 'No artificial flavor' },
+  { icon: '🦴', name: 'Bone Broth Powder', note: 'Collagen-rich' },
+  { icon: '🍄', name: 'Shiitake Powder', note: 'Umami depth' },
+  { icon: '🌶️', name: 'Chili Extract', note: 'Heat on demand' },
+  { icon: '🫛', name: 'Pea Protein', note: 'Boosts protein total' },
+  { icon: '🌊', name: 'Kombu Extract', note: 'Natural MSG alternative' },
 ];
 
-function Row({ icon: Icon, heading, text, index }) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className="grid grid-cols-[auto_1fr] gap-5 py-8 border-b border-white/[0.04] last:border-0"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateX(0)' : 'translateX(-16px)',
-        transition: `opacity 0.6s ${index * 0.06}s ease, transform 0.6s ${index * 0.06}s ease`,
-      }}
-    >
-      <div className="w-9 h-9 rounded-sm bg-[rgba(16,124,16,0.07)] border border-[rgba(16,124,16,0.1)] flex items-center justify-center flex-shrink-0 mt-0.5">
-        <Icon size={15} className="text-[#107C10]" strokeWidth={1.5} />
-      </div>
-      <div>
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-6 gap-2">
-          <h3 className="text-[#e0e0e0] font-semibold text-sm tracking-wide min-w-[200px]">
-            {heading}
-          </h3>
-          <p className="text-[#5a5a5a] text-sm font-light leading-relaxed">
-            {text}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+const badges = [
+  { text: 'No Artificial Flavors', color: 'var(--orange)' },
+  { text: 'No Added MSG', color: 'var(--gold)' },
+  { text: 'Gluten-Free Option', color: 'var(--red)' },
+  { text: 'Hormone-Free', color: 'var(--pink)' },
+  { text: 'Non-GMO', color: '#4ADE80' },
+  { text: 'Soy-Free', color: '#60A5FA' },
+];
 
 export default function Capabilities() {
-  const headerRef = useRef(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setHeaderVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (headerRef.current) observer.observe(headerRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const [ref, visible] = useScrollReveal(0.08);
 
   return (
-    <section id="capabilities" className="py-24 lg:py-36">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Divider */}
-        <div className="divider mb-20" />
+    <section id="ingredients" style={{ padding: 'clamp(80px, 10vw, 130px) 24px', background: 'var(--bg2)' }}>
+      <div ref={ref} style={{ maxWidth: 1280, margin: '0 auto' }}>
 
-        {/* Header */}
-        <div
-          ref={headerRef}
-          className="mb-14"
-          style={{
-            opacity: headerVisible ? 1 : 0,
-            transform: headerVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.7s ease, transform 0.7s ease',
-          }}
-        >
-          <div className="mb-4">
-            <span className="section-label">Advanced Capabilities</span>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 80,
+          alignItems: 'start',
+        }}>
+          {/* Left: text */}
+          <div>
+            <div className={`section-label reveal ${visible ? 'show' : ''}`} style={{ marginBottom: 14 }}>
+              What's Inside
+            </div>
+            <h2 className={`reveal up d1 ${visible ? 'show' : ''}`} style={{
+              fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+              fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 20px', lineHeight: 1.1,
+            }}>
+              Real Ingredients.<br />
+              <span className="text-fire">Real Results.</span>
+            </h2>
+            <p className={`reveal up d2 ${visible ? 'show' : ''}`} style={{
+              color: 'var(--text2)', fontSize: '1rem', lineHeight: 1.75, marginBottom: 32,
+            }}>
+              We list everything on the label. No filler, no fluff, no fine print tricks.
+              If it's in the bowl, you'll see it right here.
+            </p>
+
+            {/* Clean label badges */}
+            <div className={`reveal up d3 ${visible ? 'show' : ''}`} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {badges.map(({ text, color }) => (
+                <div key={text} style={{
+                  padding: '7px 14px',
+                  border: `1px solid ${color}44`,
+                  borderRadius: 100,
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  color,
+                  background: `${color}11`,
+                }}>
+                  {text}
+                </div>
+              ))}
+            </div>
+
+            {/* Callout */}
+            <div className={`reveal up d4 ${visible ? 'show' : ''}`} style={{
+              marginTop: 40,
+              padding: '20px 22px',
+              background: 'rgba(255,84,0,0.05)',
+              border: '1px solid var(--border-o)',
+              borderRadius: 12,
+            }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: 6 }}>
+                Third-Party Tested
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text3)', lineHeight: 1.6 }}>
+                Every batch is lab-verified for protein content, heavy metals, and purity before it ships. NSF Certified for Sport pending.
+              </div>
+            </div>
           </div>
-          <h2
-            className="font-black text-gradient leading-none tracking-tight"
-            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.04em' }}
-          >
-            Every Detail,
-            <br />
-            Engineered.
-          </h2>
-        </div>
 
-        {/* Capabilities list */}
-        <div className="max-w-4xl">
-          {capabilities.map((c, i) => (
-            <Row key={c.heading} {...c} index={i} />
-          ))}
+          {/* Right: ingredient chips */}
+          <div className={`reveal right d1 ${visible ? 'show' : ''}`}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+              {ingredients.map((ing, i) => (
+                <div
+                  key={ing.name}
+                  className="ing-chip"
+                  style={{ animationDelay: `${i * 0.04}s` }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>{ing.icon}</span>
+                  <div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text2)', lineHeight: 1.2 }}>{ing.name}</div>
+                    <div style={{ fontSize: '0.68rem', color: 'var(--text3)' }}>{ing.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Full panel note */}
+            <div style={{ marginTop: 28, padding: '14px 18px', background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 10 }}>
+              <div style={{ fontSize: '0.72rem', color: 'var(--text3)', lineHeight: 1.6 }}>
+                Full ingredients panel available on every package. Flavor variants may vary slightly — all contain ≥40g protein.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

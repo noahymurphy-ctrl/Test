@@ -1,126 +1,84 @@
-import { useEffect, useRef, useState } from 'react';
-import { Cpu, Layers, Database, HardDrive, Activity, Gauge } from 'lucide-react';
+import { useScrollReveal, useCounter } from '../hooks/useScrollAnimation';
 
 const stats = [
-  {
-    icon: Activity,
-    value: '12',
-    unit: 'TFLOPS',
-    label: 'GPU Performance',
-    description: 'Custom AMD RDNA 2 architecture delivers 12 teraflops of raw GPU power — twice that of Xbox One X.',
-  },
-  {
-    icon: Cpu,
-    value: '3.8',
-    unit: 'GHz',
-    label: 'CPU Clock Speed',
-    description: 'Custom 8-core AMD Zen 2 processor, capable of 3.8GHz unconstrained or 3.6GHz with SMT enabled.',
-  },
-  {
-    icon: Layers,
-    value: '16',
-    unit: 'GB',
-    label: 'GDDR6 Memory',
-    description: '10GB of 560GB/s GDDR6 for the GPU, plus 6GB at 336GB/s for background OS and compute tasks.',
-  },
-  {
-    icon: HardDrive,
-    value: '2.4',
-    unit: 'GB/s',
-    label: 'NVMe SSD Speed',
-    description: 'Custom-designed 1TB NVMe SSD with 2.4GB/s raw throughput and up to 4.8GB/s compressed.',
-  },
-  {
-    icon: Gauge,
-    value: '120',
-    unit: 'FPS',
-    label: 'Max Framerate',
-    description: 'Supports up to 120 frames per second with compatible displays, delivering buttery-smooth gameplay.',
-  },
-  {
-    icon: Database,
-    value: '4K',
-    unit: 'UHD',
-    label: 'Native Resolution',
-    description: 'True 4K rendering at 3840×2160 — not upscaled — with DirectX Raytracing for lifelike lighting.',
-  },
+  { val: 40, suffix: 'g', label: 'Protein', sub: 'per serving — fuels muscle repair & growth', color: 'c-orange' },
+  { val: 420, suffix: '', label: 'Calories', sub: 'balanced macros, not empty carbs', color: 'c-gold' },
+  { val: 28, suffix: 'g', label: 'Carbs', sub: 'complex carbohydrates for sustained energy', color: 'c-red' },
+  { val: 3, suffix: 'min', label: 'Ready In', sub: "fastest high-protein meal you'll ever make", color: 'c-pink' },
 ];
 
-function StatCard({ icon: Icon, value, unit, label, description, index }) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
+const colorMap = {
+  'c-orange': 'linear-gradient(135deg,#FF5400,#FF9A3C)',
+  'c-gold':   'linear-gradient(135deg,#FFB800,#FFDD66)',
+  'c-red':    'linear-gradient(135deg,#FF1A4B,#FF6E8A)',
+  'c-pink':   'linear-gradient(135deg,#FF3D8B,#FF7BB5)',
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
+function StatCard({ val, suffix, label, sub, color, trigger, delay }) {
+  const count = useCounter(val, 1600, trigger);
   return (
-    <div
-      ref={ref}
-      className="glass-card glass-card-hover rounded-sm p-8"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-        transition: `opacity 0.7s ${index * 0.08}s ease, transform 0.7s ${index * 0.08}s ease`,
-      }}
-    >
-      <div className="flex items-start justify-between mb-6">
-        <div className="w-10 h-10 rounded-sm bg-[rgba(16,124,16,0.1)] border border-[rgba(16,124,16,0.15)] flex items-center justify-center">
-          <Icon size={18} className="text-[#107C10]" strokeWidth={1.5} />
-        </div>
-        <span className="section-label">{label}</span>
+    <div className={`stat-card ${color} reveal scale`} style={{ transitionDelay: delay }}>
+      <div style={{ fontSize: 'clamp(2.6rem, 4vw, 3.8rem)', fontWeight: 900, lineHeight: 1, letterSpacing: '-0.03em', marginBottom: 6 }}>
+        <span style={{ background: colorMap[color], WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          {count}{suffix}
+        </span>
       </div>
-
-      <div className="mb-4">
-        <div className="flex items-baseline gap-2">
-          <span className="stat-number text-[#f0f0f0] font-black" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', letterSpacing: '-0.05em' }}>
-            {value}
-          </span>
-          <span className="text-[#107C10] font-semibold text-lg tracking-wide">{unit}</span>
-        </div>
+      <div style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '0.04em', color: 'var(--text)', marginBottom: 8 }}>
+        {label}
       </div>
-
-      <div className="w-8 h-px bg-[#107C10] mb-4 opacity-60" />
-
-      <p className="text-[#6a6a6a] text-sm leading-relaxed font-light">
-        {description}
-      </p>
+      <div style={{ fontSize: '0.8rem', color: 'var(--text3)', lineHeight: 1.55 }}>{sub}</div>
     </div>
   );
 }
 
 export default function Performance() {
+  const [ref, visible] = useScrollReveal(0.15);
+
   return (
-    <section id="performance" className="py-24 lg:py-36">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="mb-16 lg:mb-20">
-          <div className="mb-4">
-            <span className="section-label">Hardware Engineering</span>
+    <section id="macros" style={{ padding: 'clamp(80px, 10vw, 130px) 24px', background: 'var(--bg2)' }}>
+      <div ref={ref} style={{ maxWidth: 1280, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <div className={`section-label reveal ${visible ? 'show' : ''}`} style={{ marginBottom: 14 }}>
+            Nutrition Profile
           </div>
-          <h2
-            className="font-black text-gradient leading-none tracking-tight mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.04em' }}
-          >
-            Built for the Future.
+          <h2 className={`reveal up d1 ${visible ? 'show' : ''}`} style={{
+            fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+            fontWeight: 900, letterSpacing: '-0.03em', margin: 0, lineHeight: 1.1,
+          }}>
+            Numbers That <span className="text-fire">Actually Matter</span>
           </h2>
-          <p className="text-[#6a6a6a] font-light leading-relaxed max-w-2xl" style={{ fontSize: '1.05rem' }}>
-            Every component in the Xbox Series X was engineered from the ground up —
-            not spec-checked off a list, but purpose-built to remove every bottleneck
-            standing between you and the game.
+          <p className={`reveal up d2 ${visible ? 'show' : ''}`} style={{
+            color: 'var(--text2)', fontSize: '1rem', marginTop: 16, maxWidth: 520, margin: '16px auto 0',
+          }}>
+            No hidden sugars, no filler carbs. Every gram is intentional.
           </p>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {stats.map((stat, i) => (
-            <StatCard key={stat.label} {...stat} index={i} />
+        <div className="section-divider" style={{ marginBottom: 56 }} />
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
+          {stats.map((s, i) => (
+            <StatCard key={s.label} {...s} trigger={visible} delay={`${i * 0.1}s`} />
           ))}
+        </div>
+
+        <div className={`reveal up d4 ${visible ? 'show' : ''}`} style={{
+          marginTop: 48,
+          padding: '28px 36px',
+          background: 'linear-gradient(135deg, rgba(255,84,0,0.07) 0%, rgba(255,184,0,0.04) 100%)',
+          border: '1px solid var(--border-o)',
+          borderRadius: 16,
+          display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap',
+        }}>
+          <div style={{ flex: 1, minWidth: 240 }}>
+            <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
+              Protein-to-Calorie Ratio: 9.5%
+            </div>
+            <div style={{ fontSize: '0.82rem', color: 'var(--text3)', lineHeight: 1.6 }}>
+              That's 2–3× higher than standard instant ramen. PRORAMÉN isn't a diet food — it's engineered performance nutrition disguised as the best bowl of your life.
+            </div>
+          </div>
+          <div style={{ flexShrink: 0, fontSize: '2.8rem', fontWeight: 900 }} className="text-fire">9.5%</div>
         </div>
       </div>
     </section>
