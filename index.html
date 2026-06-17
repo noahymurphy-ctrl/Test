@@ -1,16 +1,972 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Xbox Series X — The most powerful console ever built. True 4K gaming, up to 120fps, and the world's fastest SSD." />
-    <title>Xbox Series X — Power Your Dreams</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ROULÉ — Artisan viennoiserie made by hand. Sixty rolls a day. No more." />
+  <title>ROULÉ — Artisan Viennoiserie</title>
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=cormorant-garamond:400,400i,500,500i,600,600i|dm-sans:300,400,500|playfair-display-sc:400,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── CUSTOM PROPERTIES ─────────────────────────────────── */
+    :root {
+      --cream:       #F5F0E8;
+      --espresso:    #1A1008;
+      --warm-dark:   #2C1A0E;
+      --gold:        #C8882A;
+      --gold-light:  #E8B86D;
+      --text-muted:  #8C7B6B;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-label:   'Playfair Display SC', Georgia, serif;
+
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--espresso);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* ─── FIXED WORDMARK ─────────────────────────────────────── */
+    .fixed-wordmark {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s var(--ease-luxury);
+    }
+
+    .fixed-wordmark.visible {
+      opacity: 1;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       1. HERO
+    ══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      background: var(--espresso);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .hero__wordmark {
+      font-family: var(--font-label);
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .hero__sub {
+      font-family: var(--font-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .hero__headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(3rem, 12vw, 5rem);
+      line-height: 1.08;
+      color: var(--cream);
+      max-width: 380px;
+      margin-bottom: 52px;
+    }
+
+    .hero__headline span {
+      display: block;
+    }
+
+    .hero__cta {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.35s var(--ease-luxury), color 0.35s var(--ease-luxury);
+      cursor: pointer;
+    }
+
+    @media (hover: hover) {
+      .hero__cta:hover {
+        background: var(--gold);
+        color: var(--espresso);
+      }
+    }
+
+    .hero__rule {
+      width: 100%;
+      max-width: 280px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      margin: 52px auto 0;
+    }
+
+    .hero__scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 48px;
+      overflow: hidden;
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 100%;
+      background: var(--gold-light);
+      opacity: 0.6;
+    }
+
+    /* ─── HERO ANIMATIONS ────────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__wordmark,
+      .hero__sub,
+      .hero__headline,
+      .hero__cta,
+      .hero__rule {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: heroFadeUp 0.8s var(--ease-luxury) forwards;
+      }
+
+      .hero__wordmark  { animation-delay: 0s; }
+      .hero__sub       { animation-delay: 0.2s; }
+      .hero__headline  { animation-delay: 0.5s; }
+      .hero__cta       { animation-delay: 0.9s; }
+      .hero__rule      { animation-delay: 1.1s; }
+
+      @keyframes heroFadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .hero__scroll-line {
+        animation: scrollPulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes scrollPulse {
+        0%   { opacity: 0; transform: translateY(-100%); }
+        40%  { opacity: 0.6; }
+        100% { opacity: 0; transform: translateY(100%); }
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       2. INTRO STATEMENT
+    ══════════════════════════════════════════════════════════════ */
+    .intro {
+      background: var(--cream);
+      padding: 96px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .intro__inner {
+      max-width: 420px;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .intro__border {
+      position: absolute;
+      left: 0;
+      top: 10%;
+      height: 80%;
+      width: 2px;
+      background: var(--gold);
+    }
+
+    .intro__quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 5.5vw, 2rem);
+      line-height: 1.45;
+      color: var(--espresso);
+      margin-bottom: 20px;
+    }
+
+    .intro__attribution {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    /* ─── SCROLL REVEAL BASE ─────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+        transition: opacity 0.9s var(--ease-luxury), transform 0.9s var(--ease-luxury);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+      }
+      .reveal-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-slide {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s var(--ease-luxury), transform 0.7s var(--ease-luxury);
+      }
+      .reveal-slide.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       3. THE COLLECTION
+    ══════════════════════════════════════════════════════════════ */
+    .collection {
+      background: var(--espresso);
+      padding: 96px 24px;
+    }
+
+    .collection__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .collection__label {
+      display: block;
+      font-family: var(--font-label);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .collection__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .collection__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 360px) {
+      .collection__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .collection__grid {
+        max-width: 860px;
+        gap: 24px;
+      }
+    }
+
+    .product-card {
+      background: var(--warm-dark);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card__image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card__image-fill {
+      position: absolute;
+      inset: 0;
+    }
+
+    .product-card:nth-child(1) .product-card__image-fill {
+      background: linear-gradient(145deg, #3D1F05 0%, #7A4012 40%, #C8882A 70%, #A06020 100%);
+    }
+    .product-card:nth-child(2) .product-card__image-fill {
+      background: linear-gradient(160deg, #2A1208 0%, #5C3010 35%, #8B5A20 65%, #C4943A 100%);
+    }
+    .product-card:nth-child(3) .product-card__image-fill {
+      background: linear-gradient(130deg, #180A02 0%, #3C1A08 30%, #6B3810 55%, #4A2808 85%, #1A0C04 100%);
+    }
+    .product-card:nth-child(4) .product-card__image-fill {
+      background: linear-gradient(150deg, #2E1A0A 0%, #6E4C28 40%, #9C7845 65%, #C8A060 85%, #7A5830 100%);
+    }
+
+    .product-card__body {
+      padding: 20px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-card__name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .product-card__desc {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-card__price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .product-card__order {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      transition: color 0.25s;
+    }
+
+    @media (hover: hover) {
+      .product-card__order:hover { color: var(--gold-light); }
+    }
+
+    /* Card stagger */
+    @media (prefers-reduced-motion: no-preference) {
+      .product-card {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+      }
+      .product-card.is-visible { opacity: 1; transform: translateY(0); }
+      .product-card:nth-child(1) { transition-delay: 0s; }
+      .product-card:nth-child(2) { transition-delay: 0.12s; }
+      .product-card:nth-child(3) { transition-delay: 0.24s; }
+      .product-card:nth-child(4) { transition-delay: 0.36s; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       4. PROCESS
+    ══════════════════════════════════════════════════════════════ */
+    .process {
+      background: var(--espresso);
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .process__header {
+      text-align: center;
+      padding: 0 24px;
+      margin-bottom: 52px;
+    }
+
+    .process__label {
+      display: block;
+      font-family: var(--font-label);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .process__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .process__track {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 0 10vw 32px;
+      scrollbar-width: none;
+    }
+
+    .process__track::-webkit-scrollbar { display: none; }
+
+    .process-step {
+      flex: 0 0 80vw;
+      scroll-snap-align: center;
+      background: var(--warm-dark);
+      padding: 52px 36px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .process__track { padding: 0 60px 32px; gap: 24px; }
+      .process-step { flex: 0 0 380px; }
+    }
+
+    .process-step__num {
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 8rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .process-step__label {
+      font-family: var(--font-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .process-step__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .process-step__desc {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .process__hints {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 8px 24px 0;
+    }
+
+    .process__hint-arrow {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.35;
+      position: relative;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .process__hint-arrow--left {
+        animation: hintLeft 1.4s ease-in-out infinite;
+      }
+      .process__hint-arrow--right {
+        animation: hintRight 1.4s ease-in-out infinite;
+      }
+      @keyframes hintLeft {
+        0%, 100% { transform: translateX(0); opacity: 0.35; }
+        50%       { transform: translateX(-6px); opacity: 0.65; }
+      }
+      @keyframes hintRight {
+        0%, 100% { transform: translateX(0); opacity: 0.35; }
+        50%       { transform: translateX(6px); opacity: 0.65; }
+      }
+    }
+
+    .process__hint-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       5. TESTIMONIAL
+    ══════════════════════════════════════════════════════════════ */
+    .testimonial {
+      background: var(--cream);
+      padding: 100px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial__inner {
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .testimonial__mark {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      line-height: 0.6;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .testimonial__text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.25rem, 5vw, 1.7rem);
+      color: var(--espresso);
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .testimonial__attribution {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       6. ORDER CTA BANNER
+    ══════════════════════════════════════════════════════════════ */
+    .order-banner {
+      background: var(--gold);
+      padding: 88px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .order-banner__inner {
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .order-banner__headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2rem, 8vw, 3rem);
+      color: var(--espresso);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .order-banner__sub {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--warm-dark);
+      opacity: 0.85;
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+    }
+
+    .order-banner__btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: var(--espresso);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--espresso);
+      transition: background 0.35s var(--ease-luxury), color 0.35s var(--ease-luxury);
+    }
+
+    @media (hover: hover) {
+      .order-banner__btn:hover {
+        background: var(--cream);
+        color: var(--espresso);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       7. FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--espresso);
+      border-top: 1px solid rgba(200, 136, 42, 0.2);
+      padding: 60px 24px 48px;
+      text-align: center;
+    }
+
+    .footer__wordmark {
+      font-family: var(--font-label);
+      font-size: 1.1rem;
+      letter-spacing: 0.45em;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .footer__nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .footer__nav a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      transition: color 0.25s;
+    }
+
+    @media (hover: hover) {
+      .footer__nav a:hover { color: var(--cream); }
+    }
+
+    .footer__nav-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--text-muted);
+      opacity: 0.3;
+    }
+
+    .footer__copy {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* ─── TABLET+ ────────────────────────────────────────────── */
+    @media (min-width: 768px) {
+      .hero__headline         { max-width: 560px; }
+      .intro__inner           { max-width: 560px; }
+      .collection             { padding: 112px 40px; }
+      .testimonial            { padding: 112px 40px; }
+      .testimonial__inner     { max-width: 480px; }
+      .order-banner           { padding: 112px 40px; }
+      .order-banner__inner    { max-width: 520px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fixed-wordmark" id="fixedWordmark" aria-hidden="true">ROULÉ</div>
+
+  <main>
+
+    <!-- 1. HERO ──────────────────────────────────────────────── -->
+    <header class="hero" aria-label="ROULÉ artisan viennoiserie">
+      <p class="hero__wordmark">ROULÉ</p>
+      <p class="hero__sub">Artisan Viennoiserie · Est. 2019</p>
+      <h1 class="hero__headline">
+        <span>Handmade.</span>
+        <span>Slow-risen.</span>
+        <span>Uncompromising.</span>
+      </h1>
+      <a href="#collection" class="hero__cta" role="button">Explore the Collection</a>
+      <div class="hero__rule" aria-hidden="true"></div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+      </div>
+    </header>
+
+    <!-- 2. INTRO ─────────────────────────────────────────────── -->
+    <section class="intro" aria-label="Our philosophy">
+      <div class="intro__inner reveal">
+        <div class="intro__border" aria-hidden="true"></div>
+        <blockquote>
+          <p class="intro__quote">"Each roll is laminated twelve times by hand. We make sixty a day. No more."</p>
+          <footer class="intro__attribution">— Head Baker, Mathieu</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 3. THE COLLECTION ────────────────────────────────────── -->
+    <section class="collection" id="collection" aria-label="The Collection">
+      <div class="collection__header reveal-up">
+        <span class="collection__label">The Collection</span>
+        <h2 class="collection__title">Every roll, a ritual.</h2>
+      </div>
+
+      <div class="collection__grid">
+
+        <article class="product-card" aria-label="The Classic cinnamon roll">
+          <div class="product-card__image" aria-hidden="true">
+            <div class="product-card__image-fill"></div>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">The Classic</h3>
+            <p class="product-card__desc">Ceylon cinnamon, brown butter glaze, a touch of fleur de sel.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">$14</span>
+              <a href="#" class="product-card__order">Add to order</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" aria-label="Brown Butter Cardamom cinnamon roll">
+          <div class="product-card__image" aria-hidden="true">
+            <div class="product-card__image-fill"></div>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Brown Butter Cardamom</h3>
+            <p class="product-card__desc">Nordic-spiced, cultured butter, raw honey drizzle.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">$16</span>
+              <a href="#" class="product-card__order">Add to order</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" aria-label="Dark Chocolate Sea Salt cinnamon roll">
+          <div class="product-card__image" aria-hidden="true">
+            <div class="product-card__image-fill"></div>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Dark Chocolate Sea Salt</h3>
+            <p class="product-card__desc">72% Valrhona ganache, Maldon flakes, espresso cream.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">$17</span>
+              <a href="#" class="product-card__order">Add to order</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" aria-label="Tahini Miso cinnamon roll">
+          <div class="product-card__image" aria-hidden="true">
+            <div class="product-card__image-fill"></div>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Tahini Miso</h3>
+            <p class="product-card__desc">White miso caramel, sesame cream, toasted seeds.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">$17</span>
+              <a href="#" class="product-card__order">Add to order</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. PROCESS ───────────────────────────────────────────── -->
+    <section class="process" aria-label="Our process">
+      <div class="process__header reveal-up">
+        <span class="process__label">Our Process</span>
+        <h2 class="process__title">Made with intention.</h2>
+      </div>
+
+      <div class="process__track" id="processTrack" role="list">
+
+        <div class="process-step" role="listitem">
+          <span class="process-step__num" aria-hidden="true">01</span>
+          <span class="process-step__label">The Dough</span>
+          <h3 class="process-step__title">Stone-milled. Cold-fermented.</h3>
+          <p class="process-step__desc">We source heritage wheat from a single mill in Vermont. The dough cold-ferments for eighteen hours before it is ever touched — developing the deep, complex flavor that shortcuts cannot replicate.</p>
+        </div>
+
+        <div class="process-step" role="listitem">
+          <span class="process-step__num" aria-hidden="true">02</span>
+          <span class="process-step__label">The Lamination</span>
+          <h3 class="process-step__title">Twelve folds. Two days.</h3>
+          <p class="process-step__desc">European-style cultured butter is locked into the dough and folded twelve times by hand. Each fold is followed by a rest. The result: impossibly thin layers that shatter on first bite.</p>
+        </div>
+
+        <div class="process-step" role="listitem">
+          <span class="process-step__num" aria-hidden="true">03</span>
+          <span class="process-step__label">The Proof</span>
+          <h3 class="process-step__title">Overnight. Unhurried.</h3>
+          <p class="process-step__desc">Shaped rolls proof through the night in a cold retard. They enter the oven at dawn, still cold — the abrupt heat shock creating the open, layered crumb that defines ROULÉ.</p>
+        </div>
+
+      </div>
+
+      <div class="process__hints" aria-hidden="true">
+        <div class="process__hint-arrow process__hint-arrow--left"></div>
+        <div class="process__hint-dot"></div>
+        <div class="process__hint-dot"></div>
+        <div class="process__hint-dot"></div>
+        <div class="process__hint-arrow process__hint-arrow--right"></div>
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIAL ───────────────────────────────────────── -->
+    <section class="testimonial" aria-label="Guest testimonial">
+      <div class="testimonial__inner reveal-up">
+        <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+        <p class="testimonial__text">I have eaten at three-Michelin-star restaurants on four continents. I have never stood in a line before 7 AM for anything. ROULÉ changed that.</p>
+        <p class="testimonial__attribution">Isabelle C. &nbsp;&middot;&nbsp; Paris, France</p>
+      </div>
+    </section>
+
+    <!-- 6. ORDER BANNER ─────────────────────────────────────── -->
+    <section class="order-banner" aria-label="Place your order">
+      <div class="order-banner__inner reveal-slide">
+        <h2 class="order-banner__headline">Order by 9 AM. Picked up warm.</h2>
+        <p class="order-banner__sub">Available Thursday through Sunday. Batches sell out.</p>
+        <a href="#" class="order-banner__btn" role="button">Reserve Your Order</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. FOOTER ────────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <span class="footer__wordmark">ROULÉ</span>
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="#">About</a>
+      <span class="footer__nav-sep" aria-hidden="true"></span>
+      <a href="#">Instagram</a>
+      <span class="footer__nav-sep" aria-hidden="true"></span>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="footer__copy">&copy; 2025 ROULÉ. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var prefersMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+      // Make all reveal elements immediately visible if motion is reduced
+      if (!prefersMotion) {
+        document.querySelectorAll('.reveal, .reveal-up, .reveal-slide, .product-card').forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+        return;
+      }
+
+      // IntersectionObserver for single-fire scroll reveals
+      var revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-slide');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      revealEls.forEach(function (el) { observer.observe(el); });
+
+      // Product cards — trigger stagger when grid enters viewport
+      var cards = document.querySelectorAll('.product-card');
+      var cardObserver = new IntersectionObserver(function (entries) {
+        var anyVisible = entries.some(function (e) { return e.isIntersecting; });
+        if (anyVisible) {
+          cards.forEach(function (c) { c.classList.add('is-visible'); });
+          cards.forEach(function (c) { cardObserver.unobserve(c); });
+        }
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      cards.forEach(function (c) { cardObserver.observe(c); });
+
+      // Fixed wordmark: show once hero leaves viewport
+      var hero = document.querySelector('.hero');
+      var fixedWordmark = document.getElementById('fixedWordmark');
+
+      if (hero && fixedWordmark) {
+        var heroObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              fixedWordmark.classList.remove('visible');
+            } else {
+              fixedWordmark.classList.add('visible');
+            }
+          });
+        }, { threshold: 0 });
+        heroObserver.observe(hero);
+      }
+    })();
+  </script>
+</body>
 </html>
