@@ -1,0 +1,15 @@
+# Fair Copy engine — Python dependencies for the native Mac app.
+# Installed automatically by the app's first-run setup into
+# ~/Library/Application Support/FairCopy/venv (no terminal needed).
+#
+# oemer is installed straight from GitHub (not PyPI) on purpose: the PyPI
+# release's wheel metadata hard-requires `onnxruntime-gpu`, which has no
+# macOS build at all, so `pip install oemer` fails outright on a Mac. The
+# GitHub version's setup.py detects macOS and depends on plain
+# `onnxruntime` instead, which runs on the CPU with Apple's CoreML
+# execution provider accelerating it on Apple Silicon.
+music21>=9.1
+PyMuPDF>=1.24
+onnx>=1.16
+
+oemer @ git+https://github.com/BreezeWhite/oemer

@@ -31,3 +31,8 @@ data/
 *.njsproj
 *.sln
 *.sw?
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+FairCopy/Resources/engine/__pycache__/

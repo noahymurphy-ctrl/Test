@@ -37,7 +37,9 @@ def stage(message: str) -> None:
     emit({"event": "stage", "message": message})
 
 
-IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp", ".heic"}
+# No .heic here on purpose: OpenCV (which oemer reads images with) can't
+# decode HEIC. The Mac app converts HEIC to PNG natively before calling us.
+IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp"}
 PDF_EXTS = {".pdf"}
 MUSICXML_EXTS = {".musicxml", ".xml"}
 MXL_EXTS = {".mxl"}

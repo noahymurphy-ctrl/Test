@@ -5,8 +5,16 @@ MusicXML/MXL/MIDI file — and get back one clean, standardized score:
 properly engraved notation you can view, print, and export as MusicXML,
 compressed MXL, or MIDI.
 
-It's a local app: a small React frontend and a Python backend that both
-run on your own Mac. Nothing is uploaded anywhere else.
+Everything runs on your own Mac. Nothing is uploaded anywhere else.
+
+**It comes in two flavors sharing one conversion engine:**
+
+- **The native Mac app** (`FairCopy.xcodeproj`) — open in Xcode, press
+  ⌘R, and it handles its own setup. **This is the main one; see
+  [XCODE.md](XCODE.md).**
+- **The web version** (this README, below) — a React frontend + FastAPI
+  backend you run from a terminal. Same engine, same results, useful if
+  you'd rather not involve Xcode.
 
 ## How accurate is this, really?
 

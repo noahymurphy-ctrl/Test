@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!--
+  Score viewer for the Fair Copy Mac app.
+
+  Loaded into a WKWebView from the app bundle, next to
+  opensheetmusicdisplay.min.js (Xcode flattens bundled resources into one
+  Resources/ directory, so the relative script src below resolves).
+
+  The app calls renderScore(xmlString) after the page finishes loading;
+  progress and errors are reported back over the "osmd" script message
+  handler so Swift can show real status instead of a blank view.
+-->
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #faf9f5; /* Claude paper */
+  }
+  #sheet {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 36px 64px;
+    background: #ffffff;
+    min-height: 100vh;
+    box-shadow: 0 0 0 1px rgba(20, 20, 19, 0.05);
+  }
+</style>
+<script src="opensheetmusicdisplay.min.js"></script>
+</head>
+<body>
+<div id="sheet"></div>
+<script>
+  "use strict";
+
+  function post(payload) {
+    try {
+      window.webkit.messageHandlers.osmd.postMessage(payload);
+    } catch (e) {
+      // Not running inside the app (e.g. opened in a browser) — fine.
+    }
+  }
+
+  var osmd = null;
+
+  function renderScore(xmlString) {
+    try {
+      if (!osmd) {
+        osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("sheet", {
+          autoResize: true,
+          backend: "svg",
+          drawTitle: true,
+          drawComposer: true,
+          drawPartNames: false,
+          drawingParameters: "compacttight",
+        });
+      }
+      osmd
+        .load(xmlString)
+        .then(function () {
+          osmd.render();
+          post({ event: "rendered" });
+        })
+        .catch(function (err) {
+          post({ event: "error", message: String((err && err.message) || err) });
+        });
+    } catch (err) {
+      post({ event: "error", message: String((err && err.message) || err) });
+    }
+  }
+
+  window.renderScore = renderScore;
+  post({ event: "ready" });
+</script>
+</body>
+</html>
