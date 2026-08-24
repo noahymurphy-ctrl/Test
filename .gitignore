@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Backend (server/)
+server/venv
+server/__pycache__
+server/**/__pycache__
+*.pyc
+
+# Local library + scratch data (converted scores, uploads-in-progress)
+data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

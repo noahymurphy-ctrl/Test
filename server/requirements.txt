@@ -1,0 +1,20 @@
+# Fair Copy backend — piano sheet music -> standard notation
+#
+# Installed with: pip install -r requirements.txt
+#
+# oemer is installed straight from GitHub (not PyPI) on purpose: the PyPI
+# release's wheel metadata hard-requires `onnxruntime-gpu`, which has no
+# macOS build at all, so `pip install oemer` fails outright on a Mac. The
+# GitHub version's setup.py detects macOS and depends on plain
+# `onnxruntime` instead (with Apple's CoreML execution provider), which is
+# what we want on a MacBook (no CUDA GPU involved).
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+
+music21>=9.1
+PyMuPDF>=1.24
+onnx>=1.16
+
+oemer @ git+https://github.com/BreezeWhite/oemer
