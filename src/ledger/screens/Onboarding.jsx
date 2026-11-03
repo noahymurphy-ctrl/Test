@@ -63,9 +63,9 @@ export default function Onboarding({ invite }) {
   }
 
   return (
-    <div className="relative flex min-h-[100dvh] flex-col overflow-hidden px-6 pt-[calc(var(--sat)+20px)] pb-[calc(var(--sab)+24px)]">
-      <div className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-[#a35bff] opacity-20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-[#ff6fb1] opacity-20 blur-3xl" />
+    <div className="pane relative flex flex-col px-6 pt-[calc(var(--sat)+20px)] pb-[calc(var(--sab)+24px)]">
+      <div className="pointer-events-none fixed -top-32 -right-32 h-80 w-80 rounded-full bg-[#a35bff] opacity-20 blur-3xl" />
+      <div className="pointer-events-none fixed -bottom-32 -left-32 h-80 w-80 rounded-full bg-[#ff6fb1] opacity-20 blur-3xl" />
 
       <div className="relative mx-auto flex w-full max-w-[440px] flex-1 flex-col">
         {step !== 'welcome' && (

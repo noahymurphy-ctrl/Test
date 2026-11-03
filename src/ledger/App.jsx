@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { House, Plus, ReceiptText, Settings as SettingsIcon, Share, UsersRound, X } from 'lucide-react'
 import { NavContext } from './lib/nav'
 import { enableSync, getState, leaveSync, replaceAll, retrySync, setLocal, startSync, useStore } from './lib/store'
@@ -36,10 +36,11 @@ export default function App() {
   const [addPersonOpen, setAddPersonOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [invite] = useState(inviteFromHash)
+  const scroller = useRef(null)
 
   const go = useCallback((t) => {
     setTab(t)
-    window.scrollTo({ top: 0 })
+    scroller.current?.scrollTo({ top: 0 })
   }, [])
   const openComposer = useCallback((preset) => setComposer((c) => ({ open: true, key: (c?.key || 0) + 1, preset })), [])
   const nav = useMemo(
@@ -97,10 +98,12 @@ export default function App() {
 
   // Compact title bar on scroll (mobile).
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const el = scroller.current
+    if (!el) return
+    const onScroll = () => setScrolled(el.scrollTop > 48)
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [s.local.onboarded])
 
   // Keyboard shortcuts (Mac).
   useEffect(() => {
@@ -152,7 +155,7 @@ export default function App() {
 
   return (
     <NavContext.Provider value={nav}>
-      <div className="md:flex">
+      <div className="flex h-full">
         <Sidebar tab={tab} go={go} openComposer={openComposer} />
 
         <div
@@ -161,7 +164,7 @@ export default function App() {
           <div className="flex h-11 items-center justify-center text-[16px] font-semibold">{tab === 'home' ? s.meta.name : current.label}</div>
         </div>
 
-        <main className="min-w-0 flex-1 px-4 pt-[calc(var(--sat)+14px)] pb-[calc(var(--sab)+112px)] md:px-10 md:pt-10 md:pb-16">
+        <main ref={scroller} className="pane min-w-0 flex-1 px-4 pt-[calc(var(--sat)+14px)] pb-[calc(var(--sab)+112px)] md:px-10 md:pt-10 md:pb-16">
           <div className="mx-auto max-w-[1080px]">
             {waitingForFamily ? (
               <JoinWaiting />
@@ -230,7 +233,7 @@ function TabBar({ tab, go, openComposer }) {
 function Sidebar({ tab, go, openComposer }) {
   const { meta, memberMap, me } = useStore()
   return (
-    <aside className="sticky top-0 hidden h-[100dvh] w-[264px] shrink-0 flex-col border-r border-line bg-bg-2/40 px-4 pt-8 pb-5 md:flex">
+    <aside className="hidden h-full w-[264px] shrink-0 flex-col border-r border-line bg-bg-2/40 px-4 pt-8 pb-5 md:flex">
       <div className="flex items-center gap-3 px-2">
         <Logo size={40} className="wiggle" />
         <div className="min-w-0">
@@ -295,7 +298,7 @@ function JoinWaiting() {
     )
   }
   return (
-    <div className="flex min-h-[70dvh] flex-col items-center justify-center text-center">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
       <Logo size={84} className="float" />
       <div className="title mt-6 text-[22px] font-bold">Connecting to your family…</div>
       <p className="mt-1.5 text-ink-2">Pulling down everyone’s balances.</p>
