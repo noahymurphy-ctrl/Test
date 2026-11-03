@@ -1,0 +1,437 @@
+2026-11-03 20:22:40.271185+0000 Cadence[3697:16212] [error] CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support/default.store', errno 2 / No such file or directory.
+CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support/default.store', errno 2 / No such file or directory.
+2026-11-03 20:22:40.271437+0000 Cadence[3697:16212] [error] CoreData: error: Executing as effective user 501
+CoreData: error: Executing as effective user 501
+2026-11-03 20:22:40.271849+0000 Cadence[3697:16212] [error] CoreData: error: Failed to statfs file; errno 2 / No such file or directory.
+CoreData: error: Failed to statfs file; errno 2 / No such file or directory.
+2026-11-03 20:22:40.272048+0000 Cadence[3697:16212] [error] CoreData: error: Logging status information for directory path: /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support
+CoreData: error: Logging status information for directory path: /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support
+2026-11-03 20:22:40.643050+0000 Cadence[3697:16212] [error] CoreData: error: Executing as effective user 501
+CoreData: error: Executing as effective user 501
+2026-11-03 20:22:40.643390+0000 Cadence[3697:16212] [error] CoreData: error: Information for /
+CoreData: error: Information for /
+2026-11-03 20:22:40.643648+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:40.643782+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:40.643860+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		704 bytes
+CoreData: error:   File Size: 		704 bytes
+2026-11-03 20:22:40.643908+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2
+CoreData: error:   File inode: 		2
+2026-11-03 20:22:41.298404+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		0
+CoreData: error:   File user ID: 		0
+2026-11-03 20:22:41.298628+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		0
+CoreData: error:   File group ID: 		0
+2026-11-03 20:22:41.298730+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:41.298805+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:41.299082+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:41.299365+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:41.299620+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:41.300052+0000 Cadence[3697:16212] [error] CoreData: error:   component is not writeable with errno 30
+CoreData: error:   component is not writeable with errno 30
+2026-11-03 20:22:41.540664+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users
+CoreData: error: Information for /Users
+2026-11-03 20:22:41.540771+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:41.540843+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:41.540891+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-03 20:22:41.540957+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		17196
+CoreData: error:   File inode: 		17196
+2026-11-03 20:22:41.541019+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		0
+CoreData: error:   File user ID: 		0
+2026-11-03 20:22:41.541104+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		80
+CoreData: error:   File group ID: 		80
+2026-11-03 20:22:41.543587+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:41.544196+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:41.544400+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:41.544545+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:41.548522+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:41.548643+0000 Cadence[3697:16212] [error] CoreData: error:   component is not writeable with errno 13
+CoreData: error:   component is not writeable with errno 13
+2026-11-03 20:22:41.548757+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner
+CoreData: error: Information for /Users/runner
+2026-11-03 20:22:41.621856+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:41.622055+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:41.622195+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		1280 bytes
+CoreData: error:   File Size: 		1280 bytes
+2026-11-03 20:22:41.622277+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		28182
+CoreData: error:   File inode: 		28182
+2026-11-03 20:22:41.622346+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:41.622483+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:41.622701+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:41.622791+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:43.352242+0000 Cadence[3697:16212] [error] CoreData: error:   750
+CoreData: error:   750
+2026-11-03 20:22:43.352466+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:43.352619+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:43.352694+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:43.353053+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library
+CoreData: error: Information for /Users/runner/Library
+2026-11-03 20:22:43.353260+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:43.353404+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:43.353937+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		2688 bytes
+CoreData: error:   File Size: 		2688 bytes
+2026-11-03 20:22:43.845842+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		28189
+CoreData: error:   File inode: 		28189
+2026-11-03 20:22:43.846100+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:43.846194+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:43.846244+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:43.846286+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:43.846340+0000 Cadence[3697:16212] [error] CoreData: error:   700
+CoreData: error:   700
+2026-11-03 20:22:43.846441+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:43.846907+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:44.171487+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:44.171643+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer
+CoreData: error: Information for /Users/runner/Library/Developer
+2026-11-03 20:22:44.171708+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:44.171818+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:44.171878+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-03 20:22:44.172016+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2761095
+CoreData: error:   File inode: 		2761095
+2026-11-03 20:22:44.172260+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:44.577704+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:44.577943+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:44.578162+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:44.578288+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:44.578364+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:44.578520+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:44.578652+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:44.579045+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator
+2026-11-03 20:22:44.581202+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:44.581756+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:44.582229+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-03 20:22:44.582454+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2761109
+CoreData: error:   File inode: 		2761109
+2026-11-03 20:22:44.582648+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:44.582763+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:44.907877+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:44.908211+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:44.908351+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:44.908433+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:44.908566+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:44.908656+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:44.908739+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices
+2026-11-03 20:22:45.070434+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:45.070647+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:45.070726+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		4320 bytes
+CoreData: error:   File Size: 		4320 bytes
+2026-11-03 20:22:45.070874+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2761139
+CoreData: error:   File inode: 		2761139
+2026-11-03 20:22:45.071183+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:45.071454+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:45.071655+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:45.071800+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:45.151543+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:45.151780+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:45.152138+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:45.152299+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:45.152401+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C
+2026-11-03 20:22:45.152476+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:45.396254+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:45.396445+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-03 20:22:45.396501+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2782210
+CoreData: error:   File inode: 		2782210
+2026-11-03 20:22:45.396561+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:45.396622+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:45.396793+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:45.397049+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:45.397384+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:45.480314+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:45.480771+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:45.481038+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:45.481276+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data
+2026-11-03 20:22:45.481487+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:45.481570+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:45.560861+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		384 bytes
+CoreData: error:   File Size: 		384 bytes
+2026-11-03 20:22:45.561131+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		2782211
+CoreData: error:   File inode: 		2782211
+2026-11-03 20:22:45.561313+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:45.561466+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:45.561555+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:45.561717+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:45.561903+0000 Cadence[3697:16212] [error] CoreData: error:   775
+CoreData: error:   775
+2026-11-03 20:22:45.562450+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:45.803795+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:45.803924+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:45.804036+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers
+2026-11-03 20:22:45.804116+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:45.804170+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:45.805704+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		224 bytes
+CoreData: error:   File Size: 		224 bytes
+2026-11-03 20:22:45.806147+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3518946
+CoreData: error:   File inode: 		3518946
+2026-11-03 20:22:45.806693+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:45.807052+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:45.807317+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:45.807404+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:45.807606+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:45.808069+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:46.462009+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:46.463600+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:46.463718+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data
+2026-11-03 20:22:46.463791+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:46.463857+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:46.463913+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		192 bytes
+CoreData: error:   File Size: 		192 bytes
+2026-11-03 20:22:47.283973+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3518967
+CoreData: error:   File inode: 		3518967
+2026-11-03 20:22:47.284266+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:47.284370+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:47.284439+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:47.284594+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:47.284833+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:47.285089+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:47.285971+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:47.365066+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:47.365247+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application
+2026-11-03 20:22:47.365330+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:47.365423+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:47.365624+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		4640 bytes
+CoreData: error:   File Size: 		4640 bytes
+2026-11-03 20:22:47.527277+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3519142
+CoreData: error:   File inode: 		3519142
+2026-11-03 20:22:47.527449+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:47.527518+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:47.527622+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:47.527775+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:47.527845+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:47.527946+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:47.528279+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:47.690749+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:47.691053+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48
+2026-11-03 20:22:47.691347+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:47.691559+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:47.691640+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		224 bytes
+CoreData: error:   File Size: 		224 bytes
+2026-11-03 20:22:48.267747+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3528227
+CoreData: error:   File inode: 		3528227
+2026-11-03 20:22:48.267897+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:48.269501+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:48.269606+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:48.269685+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:48.269748+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:48.269860+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:48.270177+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:48.432773+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:48.432941+0000 Cadence[3697:16212] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library
+2026-11-03 20:22:48.433016+0000 Cadence[3697:16212] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-03 20:22:48.433078+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:48.433133+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		128 bytes
+CoreData: error:   File Size: 		128 bytes
+2026-11-03 20:22:48.599268+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3528229
+CoreData: error:   File inode: 		3528229
+2026-11-03 20:22:48.599588+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:48.599764+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:48.599829+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:48.599990+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:48.600215+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:48.600392+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:49.435109+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:49.435337+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:49.435432+0000 Cadence[3697:16212] [error] CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support', errno 2 / No such file or directory.
+CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support', errno 2 / No such file or directory.
+2026-11-03 20:22:49.435511+0000 Cadence[3697:16212] [error] CoreData: error:   Sandbox access to file-write-create denied
+CoreData: error:   Sandbox access to file-write-create denied
+2026-11-03 20:22:50.011594+0000 Cadence[3697:16212] [error] CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+2026-11-03 20:22:50.011877+0000 Cadence[3697:16212] [error] CoreData: error: userInfo:
+CoreData: error: userInfo:
+2026-11-03 20:22:50.011981+0000 Cadence[3697:16212] [error] CoreData: error: 	reason : Failed to create file; code = 2
+CoreData: error: 	reason : Failed to create file; code = 2
+2026-11-03 20:22:50.012095+0000 Cadence[3697:16212] [error] CoreData: error: storeType: SQLite
+CoreData: error: storeType: SQLite
+2026-11-03 20:22:50.012175+0000 Cadence[3697:16212] [error] CoreData: error: configuration: default
+CoreData: error: configuration: default
+2026-11-03 20:22:50.012308+0000 Cadence[3697:16212] [error] CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store
+CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store
+2026-11-03 20:22:50.343407+0000 Cadence[3697:16212] [error] CoreData: error: <NSPersistentStoreCoordinator: 0x600002c07080>: Attempting recovery from error encountered during addPersistentStore: 0x600000c00ae0 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+CoreData: error: <NSPersistentStoreCoordinator: 0x600002c07080>: Attempting recovery from error encountered during addPersistentStore: 0x600000c00ae0 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+2026-11-03 20:22:50.913871+0000 Cadence[3697:16212] [error] CoreData: error: During recovery, parent directory path reported as missing
+CoreData: error: During recovery, parent directory path reported as missing
+2026-11-03 20:22:50.923780+0000 Cadence[3697:16212] [error] CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c00ae0> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store) was successful!
+CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c00ae0> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store) was successful!
+Test Case '-[CadenceTests.StreakTests testBestStreakAcrossGap]' started.
+Test Case '-[CadenceTests.StreakTests testBestStreakAcrossGap]' passed (0.003 seconds).
+Test Case '-[CadenceTests.StreakTests testCompletionAtOneSecondToMidnightKeepsStreakAfterMidnight]' started.
+Test Case '-[CadenceTests.StreakTests testCompletionAtOneSecondToMidnightKeepsStreakAfterMidnight]' passed (0.003 seconds).
+Test Case '-[CadenceTests.StreakTests testConsecutiveDaysEndingToday]' started.
+Test Case '-[CadenceTests.StreakTests testConsecutiveDaysEndingToday]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testEmptyIsZero]' started.
+Test Case '-[CadenceTests.StreakTests testEmptyIsZero]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testFallBackRepeatedHourIsSameDay]' started.
+Test Case '-[CadenceTests.StreakTests testFallBackRepeatedHourIsSameDay]' passed (0.002 seconds).
+Test Case '-[CadenceTests.StreakTests testFlyingBackAcrossDateLineWithFutureCompletion]' started.
+Test Case '-[CadenceTests.StreakTests testFlyingBackAcrossDateLineWithFutureCompletion]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testLastSecondAndFirstSecondAreDifferentDays]' started.
+Test Case '-[CadenceTests.StreakTests testLastSecondAndFirstSecondAreDifferentDays]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testMissedYesterdayBreaks]' started.
+Test Case '-[CadenceTests.StreakTests testMissedYesterdayBreaks]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testMonthYearAndLeapBoundaries]' started.
+Test Case '-[CadenceTests.StreakTests testMonthYearAndLeapBoundaries]' passed (0.021 seconds).
+Test Case '-[CadenceTests.StreakTests testRateIgnoresPendingToday]' started.
+Test Case '-[CadenceTests.StreakTests testRateIgnoresPendingToday]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testRawRoundTrip]' started.
+Test Case '-[CadenceTests.StreakTests testRawRoundTrip]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testSameInstantDiffersByZone]' started.
+Test Case '-[CadenceTests.StreakTests testSameInstantDiffersByZone]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testSpringForwardDayIsOneDay]' started.
+Test Case '-[CadenceTests.StreakTests testSpringForwardDayIsOneDay]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testTodayPendingDoesNotBreakStreak]' started.
+Test Case '-[CadenceTests.StreakTests testTodayPendingDoesNotBreakStreak]' passed (0.025 seconds).
+Test Case '-[CadenceTests.StreakTests testTravelWestKeepsCapturedDay]' started.
+Test Case '-[CadenceTests.StreakTests testTravelWestKeepsCapturedDay]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testUnscheduledDaysAreSkipped]' started.
+Test Case '-[CadenceTests.StreakTests testUnscheduledDaysAreSkipped]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testWeekdayConvention]' started.
+Test Case '-[CadenceTests.StreakTests testWeekdayConvention]' passed (0.001 seconds).
+Test Case '-[CadenceUITests.InteractionTests testHoldAndDragReorders]' started.
+Test Case '-[CadenceUITests.InteractionTests testHoldAndDragReorders]' passed (39.748 seconds).
+Test Case '-[CadenceUITests.InteractionTests testHoldOpensHistory]' started.
+Test Case '-[CadenceUITests.InteractionTests testHoldOpensHistory]' passed (60.362 seconds).
+Test Case '-[CadenceUITests.InteractionTests testTapTogglesCompletion]' started.
+Test Case '-[CadenceUITests.InteractionTests testTapTogglesCompletion]' passed (11.912 seconds).
+** TEST SUCCEEDED **

@@ -1,0 +1,200 @@
+2026-11-03 20:22:48.433078+0000 Cadence[3697:16212] [error] CoreData: error:   Device ID: 		16777231
+CoreData: error:   Device ID: 		16777231
+2026-11-03 20:22:48.433133+0000 Cadence[3697:16212] [error] CoreData: error:   File Size: 		128 bytes
+CoreData: error:   File Size: 		128 bytes
+2026-11-03 20:22:48.599268+0000 Cadence[3697:16212] [error] CoreData: error:   File inode: 		3528229
+CoreData: error:   File inode: 		3528229
+2026-11-03 20:22:48.599588+0000 Cadence[3697:16212] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-03 20:22:48.599764+0000 Cadence[3697:16212] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-03 20:22:48.599829+0000 Cadence[3697:16212] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-03 20:22:48.599990+0000 Cadence[3697:16212] [error] CoreData: error: d
+CoreData: error: d
+2026-11-03 20:22:48.600215+0000 Cadence[3697:16212] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-03 20:22:48.600392+0000 Cadence[3697:16212] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-03 20:22:49.435109+0000 Cadence[3697:16212] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-03 20:22:49.435337+0000 Cadence[3697:16212] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-03 20:22:49.435432+0000 Cadence[3697:16212] [error] CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support', errno 2 / No such file or directory.
+CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application Support', errno 2 / No such file or directory.
+2026-11-03 20:22:49.435511+0000 Cadence[3697:16212] [error] CoreData: error:   Sandbox access to file-write-create denied
+CoreData: error:   Sandbox access to file-write-create denied
+2026-11-03 20:22:50.011594+0000 Cadence[3697:16212] [error] CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+2026-11-03 20:22:50.011877+0000 Cadence[3697:16212] [error] CoreData: error: userInfo:
+CoreData: error: userInfo:
+2026-11-03 20:22:50.011981+0000 Cadence[3697:16212] [error] CoreData: error: 	reason : Failed to create file; code = 2
+CoreData: error: 	reason : Failed to create file; code = 2
+2026-11-03 20:22:50.012095+0000 Cadence[3697:16212] [error] CoreData: error: storeType: SQLite
+CoreData: error: storeType: SQLite
+2026-11-03 20:22:50.012175+0000 Cadence[3697:16212] [error] CoreData: error: configuration: default
+CoreData: error: configuration: default
+2026-11-03 20:22:50.012308+0000 Cadence[3697:16212] [error] CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store
+CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store
+CoreData: annotation: options:
+CoreData: annotation: 	NSMigratePersistentStoresAutomaticallyOption : 1
+CoreData: annotation: 	NSInferMappingModelAutomaticallyOption : 1
+CoreData: annotation: 	NSPersistentStoreRemoteChangeNotificationOptionKey : 1
+CoreData: annotation: 	NSPersistentHistoryTrackingKey : 1
+2026-11-03 20:22:50.343407+0000 Cadence[3697:16212] [error] CoreData: error: <NSPersistentStoreCoordinator: 0x600002c07080>: Attempting recovery from error encountered during addPersistentStore: 0x600000c00ae0 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+CoreData: error: <NSPersistentStoreCoordinator: 0x600002c07080>: Attempting recovery from error encountered during addPersistentStore: 0x600000c00ae0 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+2026-11-03 20:22:50.913871+0000 Cadence[3697:16212] [error] CoreData: error: During recovery, parent directory path reported as missing
+CoreData: error: During recovery, parent directory path reported as missing
+2026-11-03 20:22:50.923780+0000 Cadence[3697:16212] [error] CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c00ae0> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store) was successful!
+CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c00ae0> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/B7CD7ED2-0DFF-42FE-A30F-21CD2E3D3D2C/data/Containers/Data/Application/2BCF0EAB-56CF-4180-9C27-3E8EBBFA5B48/Library/Application%20Support/default.store) was successful!
+IOSurfaceClientSetSurfaceNotify failed e00002c7
+2026-11-03 20:22:52.336004+0000 Cadence[3697:16212] fopen failed for data file: errno = 2 (No such file or directory)
+2026-11-03 20:22:52.336235+0000 Cadence[3697:16212] Errors found! Invalidating cache...
+2026-11-03 20:22:53.401129+0000 Cadence[3697:16212] fopen failed for data file: errno = 2 (No such file or directory)
+2026-11-03 20:22:53.401615+0000 Cadence[3697:16212] Errors found! Invalidating cache...
+2026-11-03 20:22:53.475972+0000 Cadence[3697:16212] [error] building pipeline path_edges-hba15feba4 took 1.140286 seconds
+Test Suite 'All tests' started at 2026-11-03 20:23:10.610.
+Test Suite 'CadenceTests.xctest' started at 2026-11-03 20:23:10.611.
+Test Suite 'StreakTests' started at 2026-11-03 20:23:10.612.
+Test Case '-[CadenceTests.StreakTests testBestStreakAcrossGap]' started.
+Test Case '-[CadenceTests.StreakTests testBestStreakAcrossGap]' passed (0.003 seconds).
+Test Case '-[CadenceTests.StreakTests testCompletionAtOneSecondToMidnightKeepsStreakAfterMidnight]' started.
+Test Case '-[CadenceTests.StreakTests testCompletionAtOneSecondToMidnightKeepsStreakAfterMidnight]' passed (0.003 seconds).
+Test Case '-[CadenceTests.StreakTests testConsecutiveDaysEndingToday]' started.
+Test Case '-[CadenceTests.StreakTests testConsecutiveDaysEndingToday]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testEmptyIsZero]' started.
+Test Case '-[CadenceTests.StreakTests testEmptyIsZero]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testFallBackRepeatedHourIsSameDay]' started.
+Test Case '-[CadenceTests.StreakTests testFallBackRepeatedHourIsSameDay]' passed (0.002 seconds).
+Test Case '-[CadenceTests.StreakTests testFlyingBackAcrossDateLineWithFutureCompletion]' started.
+Test Case '-[CadenceTests.StreakTests testFlyingBackAcrossDateLineWithFutureCompletion]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testLastSecondAndFirstSecondAreDifferentDays]' started.
+Test Case '-[CadenceTests.StreakTests testLastSecondAndFirstSecondAreDifferentDays]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testMissedYesterdayBreaks]' started.
+Test Case '-[CadenceTests.StreakTests testMissedYesterdayBreaks]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testMonthYearAndLeapBoundaries]' started.
+Test Case '-[CadenceTests.StreakTests testMonthYearAndLeapBoundaries]' passed (0.021 seconds).
+Test Case '-[CadenceTests.StreakTests testRateIgnoresPendingToday]' started.
+Test Case '-[CadenceTests.StreakTests testRateIgnoresPendingToday]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testRawRoundTrip]' started.
+Test Case '-[CadenceTests.StreakTests testRawRoundTrip]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testSameInstantDiffersByZone]' started.
+Test Case '-[CadenceTests.StreakTests testSameInstantDiffersByZone]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testSpringForwardDayIsOneDay]' started.
+Test Case '-[CadenceTests.StreakTests testSpringForwardDayIsOneDay]' passed (0.000 seconds).
+Test Case '-[CadenceTests.StreakTests testTodayPendingDoesNotBreakStreak]' started.
+Test Case '-[CadenceTests.StreakTests testTodayPendingDoesNotBreakStreak]' passed (0.025 seconds).
+Test Case '-[CadenceTests.StreakTests testTravelWestKeepsCapturedDay]' started.
+Test Case '-[CadenceTests.StreakTests testTravelWestKeepsCapturedDay]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testUnscheduledDaysAreSkipped]' started.
+Test Case '-[CadenceTests.StreakTests testUnscheduledDaysAreSkipped]' passed (0.001 seconds).
+Test Case '-[CadenceTests.StreakTests testWeekdayConvention]' started.
+Test Case '-[CadenceTests.StreakTests testWeekdayConvention]' passed (0.001 seconds).
+Test Suite 'StreakTests' passed at 2026-11-03 20:23:10.732.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.061 (0.120) seconds
+Test Suite 'CadenceTests.xctest' passed at 2026-11-03 20:23:10.732.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.061 (0.121) seconds
+Test Suite 'All tests' passed at 2026-11-03 20:23:10.734.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.061 (0.124) seconds
+2026-11-03 20:23:28.581801+0000 CadenceUITests-Runner[4108:18453] [UIKit App Config] `UIScene` lifecycle will soon be required. Failure to adopt will result in an assert in the future.
+2026-11-03 20:23:28.604988+0000 CadenceUITests-Runner[4108:18453] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'All tests' started at 2026-11-03 20:24:01.747.
+Test Suite 'CadenceUITests.xctest' started at 2026-11-03 20:24:01.769.
+Test Suite 'InteractionTests' started at 2026-11-03 20:24:01.769.
+Test Case '-[CadenceUITests.InteractionTests testHoldAndDragReorders]' started.
+    t =     0.00s Start Test at 2026-11-03 20:24:01.772
+    t =     2.03s Set Up
+    t =     2.11s     Open com.noahmurphy.cadence
+    t =     2.11s         Launch com.noahmurphy.cadence
+    t =    16.64s             Setting up automation session
+    t =    16.77s             Wait for com.noahmurphy.cadence to idle
+    t =    17.79s Waiting 5.0s for "habit.Drink water" Any to exist
+    t =    18.81s     Checking `Expect predicate `existsNoRetry == 1` for object "habit.Drink water" Any`
+    t =    18.81s         Checking existence of `"habit.Drink water" Any`
+    t =    19.99s Find the "habit.Drink water" Any
+    t =    20.38s Find the "habit.Meditate" Any
+    t =    20.54s Press "habit.Drink water" Button for 0.6 seconds, drag to "habit.No phone in bed" Any with velocity of 250.00 pixels per second, and then hold for 0.3 seconds
+    t =    20.54s     Wait for com.noahmurphy.cadence to idle
+    t =    20.54s     Find the "habit.Drink water" Button
+    t =    20.61s     Check for interrupting elements affecting "habit.Drink water" Button
+    t =    20.88s     Synthesize event
+    t =    20.88s         Find the "habit.No phone in bed" Any
+    t =    21.01s         Compute first hitpoint
+    t =    33.69s         Compute second hitpoint
+    t =    36.72s     Wait for com.noahmurphy.cadence to idle
+    t =    37.79s Find the "habit.Drink water" Button
+    t =    37.95s Find the "habit.Meditate" Button
+    t =    38.31s Checking existence of `"Edit" Button`
+    t =    38.40s Tear Down
+Test Case '-[CadenceUITests.InteractionTests testHoldAndDragReorders]' passed (39.748 seconds).
+Test Case '-[CadenceUITests.InteractionTests testHoldOpensHistory]' started.
+    t =     0.00s Start Test at 2026-11-03 20:24:41.521
+    t =     0.05s Set Up
+    t =     0.05s     Open com.noahmurphy.cadence
+    t =     0.05s         Launch com.noahmurphy.cadence
+    t =     0.05s             Terminate com.noahmurphy.cadence:4386
+    t =    47.15s             Setting up automation session
+    t =    51.72s             Wait for com.noahmurphy.cadence to idle
+    t =    55.83s Waiting 5.0s for "habit.Read 20 pages" Any to exist
+    t =    56.86s     Checking `Expect predicate `existsNoRetry == 1` for object "habit.Read 20 pages" Any`
+    t =    56.87s         Checking existence of `"habit.Read 20 pages" Any`
+    t =    57.11s Press "habit.Read 20 pages" Any for 0.8 seconds
+    t =    57.11s     Wait for com.noahmurphy.cadence to idle
+    t =    57.11s     Find the "habit.Read 20 pages" Any
+    t =    57.20s     Check for interrupting elements affecting "habit.Read 20 pages" Button
+    t =    57.38s     Synthesize event
+    t =    58.53s     Wait for com.noahmurphy.cadence to idle
+    t =    58.77s Waiting 3.0s for "Edit" Button to exist
+    t =    59.77s     Checking `Expect predicate `existsNoRetry == 1` for object "Edit" Button`
+    t =    59.78s         Checking existence of `"Edit" Button`
+    t =    59.95s Checking existence of `"Read 20 pages" StaticText`
+    t =    60.01s Tear Down
+Test Case '-[CadenceUITests.InteractionTests testHoldOpensHistory]' passed (60.362 seconds).
+Test Case '-[CadenceUITests.InteractionTests testTapTogglesCompletion]' started.
+    t =     0.00s Start Test at 2026-11-03 20:25:41.884
+    t =     0.10s Set Up
+    t =     0.10s     Open com.noahmurphy.cadence
+    t =     0.10s         Launch com.noahmurphy.cadence
+    t =     0.10s             Terminate com.noahmurphy.cadence:6875
+    t =     2.17s             Setting up automation session
+    t =     4.25s             Wait for com.noahmurphy.cadence to idle
+    t =     6.17s Waiting 5.0s for "habit.Meditate" Any to exist
+    t =     7.21s     Checking `Expect predicate `existsNoRetry == 1` for object "habit.Meditate" Any`
+    t =     7.21s         Checking existence of `"habit.Meditate" Any`
+    t =     8.41s Checking `Expect predicate `value BEGINSWITH "Not done"` for object "habit.Meditate" Any`
+    t =     8.41s     Find the "habit.Meditate" Any
+    t =     8.47s Tap "habit.Meditate" Button
+    t =     8.47s     Wait for com.noahmurphy.cadence to idle
+    t =     8.48s     Find the "habit.Meditate" Button
+    t =     8.52s     Check for interrupting elements affecting "habit.Meditate" Button
+    t =     8.65s     Synthesize event
+    t =     8.97s     Wait for com.noahmurphy.cadence to idle
+    t =    10.01s Checking `Expect predicate `value BEGINSWITH "Done"` for object "habit.Meditate" Button`
+    t =    10.01s     Find the "habit.Meditate" Button
+    t =    10.09s Tap "habit.Meditate" Button
+    t =    10.09s     Wait for com.noahmurphy.cadence to idle
+    t =    10.09s     Find the "habit.Meditate" Button
+    t =    10.15s     Check for interrupting elements affecting "habit.Meditate" Button
+    t =    10.22s     Synthesize event
+    t =    10.55s     Wait for com.noahmurphy.cadence to idle
+    t =    11.60s Checking `Expect predicate `value BEGINSWITH "Not done"` for object "habit.Meditate" Button`
+    t =    11.60s     Find the "habit.Meditate" Button
+    t =    11.68s Tear Down
+Test Case '-[CadenceUITests.InteractionTests testTapTogglesCompletion]' passed (11.912 seconds).
+Test Suite 'InteractionTests' passed at 2026-11-03 20:25:53.795.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 112.022 (112.025) seconds
+Test Suite 'CadenceUITests.xctest' passed at 2026-11-03 20:25:53.795.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 112.022 (112.027) seconds
+Test Suite 'All tests' passed at 2026-11-03 20:25:53.796.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 112.022 (112.049) seconds
+2026-11-03 20:25:54.882 xcodebuild[1420:7665] [MT] IDETestOperationsObserverDebug: 384.418 elapsed -- Testing started completed.
+2026-11-03 20:25:54.883 xcodebuild[1420:7665] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-03 20:25:54.883 xcodebuild[1420:7665] [MT] IDETestOperationsObserverDebug: 384.418 sec, +384.418 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/Test/Test/dd/Logs/Test/Test-Cadence-2026.11.03_20-18-56-+0000.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started
