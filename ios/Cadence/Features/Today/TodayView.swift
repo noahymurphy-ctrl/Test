@@ -9,7 +9,7 @@ struct TodayView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                AppBackground(accent: model.readiness.map { Theme.readinessColor($0.score) } ?? Theme.violet)
+                AppBackground(accent: model.readiness.map { Theme.readinessColor($0.score) } ?? Theme.ink)
                 ScrollView {
                     VStack(spacing: 16) {
                         header
@@ -53,7 +53,7 @@ struct TodayView: View {
                     .tracking(1.2)
                     .foregroundStyle(Theme.textTertiary)
                 Text(greeting)
-                    .font(.rounded(30, .bold))
+                    .font(.display(30, .bold))
                     .foregroundStyle(Theme.textPrimary)
             }
             Spacer()
@@ -72,13 +72,13 @@ struct TodayView: View {
     @ViewBuilder
     private var statusBanner: some View {
         if model.health.needsAccountLink {
-            banner(symbol: "link.badge.plus", tint: Theme.amber,
+            banner(symbol: "link.badge.plus", tint: Theme.ink,
                    text: "Link your Fitbit to Google Health to sync.", action: "Open",
                    url: URL(string: "https://fitbit.google.com/auth/signup"))
         } else if let error = model.health.lastError {
-            banner(symbol: "exclamationmark.triangle.fill", tint: Theme.amber, text: error, action: nil, url: nil)
+            banner(symbol: "exclamationmark.triangle.fill", tint: Theme.ink, text: error, action: nil, url: nil)
         } else if model.health.snapshot?.isDemo == true {
-            banner(symbol: "sparkles.rectangle.stack", tint: Theme.sky,
+            banner(symbol: "sparkles.rectangle.stack", tint: Theme.ink,
                    text: "You're viewing sample data.", action: "Connect", url: nil) {
                 model.showSettings = true
             }
@@ -182,7 +182,7 @@ struct ReadinessCard: View {
                     VStack(alignment: .leading, spacing: 12) {
                         VStack(alignment: .leading, spacing: 3) {
                             Text(readiness.label)
-                                .font(.rounded(24, .bold))
+                                .font(.display(24, .bold))
                                 .foregroundStyle(Theme.readinessColor(readiness.score))
                             Text(readiness.guidance)
                                 .font(.footnote)
@@ -259,7 +259,7 @@ struct MetricTile: View {
                         .foregroundStyle(Theme.textSecondary)
                     HStack(alignment: .firstTextBaseline, spacing: 3) {
                         Text(latest.map { metric.formatShort($0.value) } ?? "—")
-                            .font(.rounded(26, .bold))
+                            .font(.display(26, .bold))
                             .monospacedDigit()
                             .foregroundStyle(Theme.textPrimary)
                             .contentTransition(.numericText())
@@ -284,14 +284,14 @@ struct SleepSummaryCard: View {
         Card {
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
-                    IconBadge(symbol: "moon.stars.fill", tint: Theme.violet)
+                    IconBadge(symbol: "moon.stars.fill", tint: Theme.ink)
                     Text("Last Night").font(.headline).foregroundStyle(Theme.textPrimary)
                     Spacer()
                     Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.textTertiary)
                 }
                 HStack(alignment: .firstTextBaseline) {
                     Text(Metric.sleep.format(night.hoursAsleep))
-                        .font(.rounded(30, .bold))
+                        .font(.display(30, .bold))
                         .foregroundStyle(Theme.textPrimary)
                     Spacer()
                     Text("\(night.start.formatted(date: .omitted, time: .shortened)) – \(night.end.formatted(date: .omitted, time: .shortened))")
@@ -350,7 +350,7 @@ struct WorkoutRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            IconBadge(symbol: symbol, tint: Theme.amber, size: 40)
+            IconBadge(symbol: symbol, tint: Theme.ink, size: 40)
             VStack(alignment: .leading, spacing: 2) {
                 Text(workout.name).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.textPrimary)
                 Text(workout.start.formatted(.dateTime.weekday(.abbreviated).hour().minute()))

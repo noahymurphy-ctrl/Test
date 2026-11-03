@@ -14,7 +14,7 @@ struct BriefCard: View {
         .overlay(alignment: .top) {
             // Hairline of Claude's color across the top edge.
             Capsule()
-                .fill(Theme.claudeGradient)
+                .fill(Theme.chrome)
                 .frame(height: 2)
                 .padding(.horizontal, 40)
                 .opacity(0.7)
@@ -25,7 +25,7 @@ struct BriefCard: View {
     private var header: some View {
         HStack(spacing: 10) {
             ZStack {
-                RoundedRectangle(cornerRadius: 9, style: .continuous).fill(Color(red: 0.85, green: 0.52, blue: 0.36).opacity(0.16))
+                RoundedRectangle(cornerRadius: 9, style: .continuous).fill(Theme.ink.opacity(0.16))
                 ClaudeSpark(size: 14, animating: model.brief.phase == .loading)
             }
             .frame(width: 30, height: 30)
@@ -64,7 +64,7 @@ struct BriefCard: View {
                     .foregroundStyle(Theme.textSecondary)
                 Button("Add API Key") { model.showSettings = true }
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Theme.claudeGradient)
+                    .foregroundStyle(Theme.chrome)
             }
         } else {
             switch model.brief.phase {
@@ -74,7 +74,7 @@ struct BriefCard: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Label(message, systemImage: "exclamationmark.triangle.fill")
                         .font(.footnote)
-                        .foregroundStyle(Theme.amber)
+                        .foregroundStyle(Theme.ink)
                     Button("Try Again") { Task { await model.generateBriefIfNeeded(force: true) } }
                         .font(.subheadline.weight(.semibold))
                 }
@@ -110,7 +110,7 @@ private struct BriefContent: View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(brief.headline)
-                    .font(.rounded(21, .bold))
+                    .font(.display(21, .bold))
                     .foregroundStyle(Theme.textPrimary)
                     .fixedSize(horizontal: false, vertical: true)
                 Text(brief.summary)
@@ -130,12 +130,12 @@ private struct BriefContent: View {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: "scope")
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(Theme.claudeGradient)
+                    .foregroundStyle(Theme.chrome)
                     .padding(.top, 2)
                 VStack(alignment: .leading, spacing: 3) {
                     Text("TODAY'S FOCUS")
                         .font(.system(size: 10, weight: .bold)).tracking(1.4)
-                        .foregroundStyle(Color(red: 0.98, green: 0.72, blue: 0.5))
+                        .foregroundStyle(Theme.textSecondary)
                     Text(brief.focus.title).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.textPrimary)
                     Text(brief.focus.detail).font(.footnote).foregroundStyle(Theme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -143,7 +143,7 @@ private struct BriefContent: View {
             }
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(red: 0.85, green: 0.52, blue: 0.36).opacity(0.1), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .background(Theme.ink.opacity(0.1), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
 
             Button {
                 model.ask("Tell me more about today's brief: \(brief.headline)")

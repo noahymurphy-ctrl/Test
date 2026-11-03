@@ -20,11 +20,11 @@ struct TrendsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                AppBackground(accent: Theme.aqua)
+                AppBackground(accent: Theme.ink)
                 ScrollView {
                     VStack(spacing: 14) {
                         HStack {
-                            Text("Trends").font(.rounded(30, .bold)).foregroundStyle(Theme.textPrimary)
+                            Text("Trends").font(.display(30, .bold)).foregroundStyle(Theme.textPrimary)
                             Spacer()
                         }
                         .padding(.horizontal, 4)

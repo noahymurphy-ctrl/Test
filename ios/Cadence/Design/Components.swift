@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - Background
 
 struct AppBackground: View {
-    var accent: Color = Theme.violet
+    var accent: Color = Theme.ink
 
     var body: some View {
         ZStack {
@@ -15,7 +15,7 @@ struct AppBackground: View {
                 .blur(radius: 120)
                 .offset(x: -140, y: -320)
             Circle()
-                .fill(Theme.aqua.opacity(0.12))
+                .fill(Theme.ink.opacity(0.12))
                 .frame(width: 360, height: 360)
                 .blur(radius: 120)
                 .offset(x: 170, y: -120)
@@ -63,7 +63,7 @@ struct SectionHeader: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(title)
-                .font(.rounded(20, .bold))
+                .font(.display(20, .bold))
                 .foregroundStyle(Theme.textPrimary)
             Spacer()
             if let trailing {
@@ -113,7 +113,7 @@ struct ScoreRing: View {
                 .shadow(color: color.opacity(0.55), radius: 12)
             VStack(spacing: 0) {
                 Text("\(score)")
-                    .font(.rounded(46, .bold))
+                    .font(.display(46, .bold))
                     .monospacedDigit()
                     .contentTransition(.numericText(value: Double(score)))
                     .foregroundStyle(Theme.textPrimary)
@@ -189,7 +189,7 @@ struct DeltaChip: View {
         let delta = value - baseline
         let pct = baseline != 0 ? delta / baseline * 100 : 0
         let good: Bool? = metric.higherIsBetter.map { $0 ? delta >= 0 : delta <= 0 }
-        let color = abs(pct) < 3 ? Theme.textSecondary : (good == nil ? Theme.sky : (good! ? Theme.mint : Theme.amber))
+        let color = abs(pct) < 3 ? Theme.textSecondary : (good == nil ? Theme.ink : (good! ? Theme.ink : Theme.ink))
 
         HStack(spacing: 3) {
             Image(systemName: abs(pct) < 3 ? "equal" : (delta > 0 ? "arrow.up.right" : "arrow.down.right"))
@@ -253,7 +253,7 @@ struct ClaudeSpark: View {
     var body: some View {
         Image(systemName: "sparkle")
             .font(.system(size: size, weight: .semibold))
-            .foregroundStyle(Theme.claudeGradient)
+            .foregroundStyle(Theme.chrome)
             .rotationEffect(.degrees(rotation))
             .onAppear {
                 guard animating else { return }
@@ -263,16 +263,16 @@ struct ClaudeSpark: View {
 }
 
 struct PrimaryButtonStyle: ButtonStyle {
-    var gradient: LinearGradient = Theme.brandGradient
+    var gradient: LinearGradient = Theme.chrome
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.rounded(17, .semibold))
+            .font(.display(17, .semibold))
             .foregroundStyle(Color.black.opacity(0.85))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 17)
             .background(gradient, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-            .shadow(color: Theme.aqua.opacity(0.25), radius: 18, y: 8)
+            .shadow(color: Theme.ink.opacity(0.25), radius: 18, y: 8)
             .scaleEffect(configuration.isPressed ? 0.97 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: configuration.isPressed)
     }
@@ -281,7 +281,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 struct SecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.rounded(17, .semibold))
+            .font(.display(17, .semibold))
             .foregroundStyle(Theme.textPrimary)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 17)

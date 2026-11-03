@@ -14,7 +14,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            AppBackground(accent: step == .claude ? Color(red: 0.85, green: 0.52, blue: 0.36) : Theme.violet)
+            AppBackground(accent: step == .claude ? Theme.ink : Theme.ink)
                 .animation(.easeInOut(duration: 0.6), value: step)
 
             VStack(spacing: 0) {
@@ -45,7 +45,7 @@ struct OnboardingView: View {
                 .frame(width: 220, height: 220)
             VStack(spacing: 12) {
                 Text("Cadence")
-                    .font(.rounded(44, .bold))
+                    .font(.display(44, .bold))
                     .foregroundStyle(Theme.textPrimary)
                 Text("Your Fitbit data, finally understood.\nDeep analysis by Claude, every morning.")
                     .font(.system(size: 17))
@@ -62,10 +62,10 @@ struct OnboardingView: View {
     private var connect: some View {
         VStack(alignment: .leading, spacing: 22) {
             Spacer()
-            IconBadge(symbol: "applewatch.radiowaves.left.and.right", tint: Theme.aqua, size: 64)
+            IconBadge(symbol: "applewatch.radiowaves.left.and.right", tint: Theme.ink, size: 64)
             VStack(alignment: .leading, spacing: 10) {
                 Text("Connect your Fitbit")
-                    .font(.rounded(32, .bold))
+                    .font(.display(32, .bold))
                     .foregroundStyle(Theme.textPrimary)
                 Text("Fitbit data now lives in Google Health. Sign in with the Google account linked to your Fitbit. Access is read-only.")
                     .foregroundStyle(Theme.textSecondary)
@@ -81,7 +81,7 @@ struct OnboardingView: View {
             if let errorMessage {
                 Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
                     .font(.footnote)
-                    .foregroundStyle(Theme.amber)
+                    .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
@@ -112,7 +112,7 @@ struct OnboardingView: View {
             Spacer()
             ZStack {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(Theme.claudeGradient)
+                    .fill(Theme.chrome)
                     .opacity(0.18)
                 ClaudeSpark(size: 30, animating: true)
             }
@@ -120,7 +120,7 @@ struct OnboardingView: View {
 
             VStack(alignment: .leading, spacing: 10) {
                 Text("Add Claude")
-                    .font(.rounded(32, .bold))
+                    .font(.display(32, .bold))
                     .foregroundStyle(Theme.textPrimary)
                 Text("Cadence uses Claude to write your daily brief and answer questions about your data. Paste an API key from the Claude Console.")
                     .foregroundStyle(Theme.textSecondary)
@@ -152,7 +152,7 @@ struct OnboardingView: View {
                     model.setClaudeAPIKey(apiKey)
                     model.hasOnboarded = true
                 }
-                .buttonStyle(PrimaryButtonStyle(gradient: Theme.claudeGradient))
+                .buttonStyle(PrimaryButtonStyle(gradient: Theme.chrome))
                 .disabled(apiKey.trimmingCharacters(in: .whitespaces).isEmpty)
                 .opacity(apiKey.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1)
 
@@ -166,7 +166,7 @@ struct OnboardingView: View {
 
     private func permissionRow(_ symbol: String, _ title: String, _ subtitle: String) -> some View {
         HStack(spacing: 14) {
-            IconBadge(symbol: symbol, tint: Theme.aqua, size: 36)
+            IconBadge(symbol: symbol, tint: Theme.ink, size: 36)
             VStack(alignment: .leading, spacing: 2) {
                 Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.textPrimary)
                 Text(subtitle).font(.footnote).foregroundStyle(Theme.textSecondary)
@@ -217,7 +217,7 @@ struct HeroOrb: View {
             ForEach(0..<3) { i in
                 Circle()
                     .strokeBorder(
-                        AngularGradient(colors: [Theme.aqua, Theme.violet, Theme.aqua], center: .center),
+                        AngularGradient(colors: [Theme.ink, Theme.ink, Theme.ink], center: .center),
                         lineWidth: 1.5
                     )
                     .opacity(0.65 - Double(i) * 0.18)
@@ -225,7 +225,7 @@ struct HeroOrb: View {
                     .rotationEffect(.degrees(breathe ? Double(i) * 40 + 60 : Double(i) * 40))
             }
             Circle()
-                .fill(RadialGradient(colors: [Theme.aqua.opacity(0.9), Theme.violet.opacity(0.4), .clear],
+                .fill(RadialGradient(colors: [Theme.ink.opacity(0.9), Theme.ink.opacity(0.4), .clear],
                                      center: .center, startRadius: 2, endRadius: 70))
                 .frame(width: 120, height: 120)
                 .blur(radius: 8)
@@ -233,7 +233,7 @@ struct HeroOrb: View {
             Image(systemName: "waveform.path.ecg")
                 .font(.system(size: 40, weight: .semibold))
                 .foregroundStyle(.white)
-                .shadow(color: Theme.aqua, radius: 12)
+                .shadow(color: Theme.ink, radius: 12)
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 3.2).repeatForever(autoreverses: true)) { breathe = true }

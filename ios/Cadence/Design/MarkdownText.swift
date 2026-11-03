@@ -19,17 +19,17 @@ struct MarkdownText: View {
                 switch block {
                 case .heading(let t):
                     inline(t)
-                        .font(.rounded(17, .bold))
+                        .font(.display(17, .bold))
                         .foregroundStyle(Theme.textPrimary)
                         .padding(.top, 4)
                 case .bullet(let t):
                     HStack(alignment: .firstTextBaseline, spacing: 10) {
-                        Circle().fill(Theme.aqua).frame(width: 5, height: 5).offset(y: -2)
+                        Circle().fill(Theme.ink).frame(width: 5, height: 5).offset(y: -2)
                         inline(t)
                     }
                 case .numbered(let n, let t):
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text(n).font(font.weight(.semibold)).foregroundStyle(Theme.aqua).monospacedDigit()
+                        Text(n).font(font.weight(.semibold)).foregroundStyle(Theme.ink).monospacedDigit()
                         inline(t)
                     }
                 case .paragraph(let t):

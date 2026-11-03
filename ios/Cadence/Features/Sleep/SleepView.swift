@@ -8,10 +8,10 @@ struct SleepView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                AppBackground(accent: Theme.violet)
+                AppBackground(accent: Theme.ink)
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Sleep").font(.rounded(30, .bold)).foregroundStyle(Theme.textPrimary)
+                        Text("Sleep").font(.display(30, .bold)).foregroundStyle(Theme.textPrimary)
                             .padding(.horizontal, 4).padding(.top, 8)
 
                         if let snapshot = model.health.snapshot {
@@ -46,7 +46,7 @@ struct SleepView: View {
                                     Text("Analyze my sleep")
                                 }
                             }
-                            .buttonStyle(PrimaryButtonStyle(gradient: Theme.claudeGradient))
+                            .buttonStyle(PrimaryButtonStyle(gradient: Theme.chrome))
                         }
                     }
                     .padding(.horizontal, 16)
@@ -67,7 +67,7 @@ struct SleepView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(nightLabel(night)).font(.footnote.weight(.semibold)).foregroundStyle(Theme.textTertiary)
                         Text(Metric.sleep.format(night.hoursAsleep))
-                            .font(.rounded(44, .bold))
+                            .font(.display(44, .bold))
                             .foregroundStyle(Theme.textPrimary)
                             .contentTransition(.numericText())
                     }
@@ -199,7 +199,7 @@ struct SleepView: View {
         let sd = (bedtimes.map { ($0 - mean) * ($0 - mean) }.reduce(0, +) / Double(max(bedtimes.count - 1, 1))).squareRoot()
         let avgBed = Calendar.cadence.startOfDay(for: Date()).addingTimeInterval((18 * 60 + mean) * 60)
         let label = sd < 30 ? "Very consistent" : sd < 60 ? "Fairly consistent" : "Irregular"
-        let color = sd < 30 ? Theme.mint : sd < 60 ? Theme.aqua : Theme.amber
+        let color = sd < 30 ? Theme.ink : sd < 60 ? Theme.ink : Theme.ink
 
         return Card {
             HStack(spacing: 14) {
@@ -239,10 +239,10 @@ private struct EfficiencyRing: View {
             Circle().stroke(Color.white.opacity(0.07), lineWidth: 7)
             Circle()
                 .trim(from: 0, to: value)
-                .stroke(Theme.violet.gradient, style: StrokeStyle(lineWidth: 7, lineCap: .round))
+                .stroke(Theme.ink.gradient, style: StrokeStyle(lineWidth: 7, lineCap: .round))
                 .rotationEffect(.degrees(-90))
             VStack(spacing: -1) {
-                Text("\(Int(value * 100))").font(.rounded(20, .bold)).foregroundStyle(Theme.textPrimary)
+                Text("\(Int(value * 100))").font(.display(20, .bold)).foregroundStyle(Theme.textPrimary)
                 Text("EFFIC.").font(.system(size: 8, weight: .bold)).tracking(0.8).foregroundStyle(Theme.textTertiary)
             }
         }

@@ -18,7 +18,7 @@ struct SettingsView: View {
             List {
                 Section {
                     HStack(spacing: 14) {
-                        IconBadge(symbol: "applewatch", tint: model.auth.isConnected ? Theme.mint : Theme.textSecondary, size: 40)
+                        IconBadge(symbol: "applewatch", tint: model.auth.isConnected ? Theme.ink : Theme.textSecondary, size: 40)
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Fitbit").font(.headline)
                             Text(model.auth.isConnected ? "Connected via Google Health" : "Not connected")
@@ -41,7 +41,7 @@ struct SettingsView: View {
                         .disabled(connecting)
                     }
                     if let connectError {
-                        Text(connectError).font(.footnote).foregroundStyle(Theme.amber)
+                        Text(connectError).font(.footnote).foregroundStyle(Theme.ink)
                     }
                 } header: {
                     Text("Data Source")
@@ -52,7 +52,7 @@ struct SettingsView: View {
                 Section {
                     HStack(spacing: 14) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color(red: 0.85, green: 0.52, blue: 0.36).opacity(0.16))
+                            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Theme.ink.opacity(0.16))
                             ClaudeSpark(size: 18)
                         }
                         .frame(width: 40, height: 40)

@@ -37,7 +37,7 @@ struct MetricDetailView: View {
                         .foregroundStyle(Theme.textTertiary)
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
                         Text(shown.map { metric.format($0.value) } ?? "—")
-                            .font(.rounded(52, .bold))
+                            .font(.display(52, .bold))
                             .monospacedDigit()
                             .contentTransition(.numericText())
                             .foregroundStyle(Theme.textPrimary)
@@ -81,7 +81,7 @@ struct MetricDetailView: View {
                         Text("Ask Claude about \(metric.title)")
                     }
                 }
-                .buttonStyle(PrimaryButtonStyle(gradient: Theme.claudeGradient))
+                .buttonStyle(PrimaryButtonStyle(gradient: Theme.chrome))
                 .padding(.top, 4)
             }
             .padding(.horizontal, 16)
@@ -110,7 +110,7 @@ struct MetricDetailView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title.uppercased()).font(.system(size: 10, weight: .bold)).tracking(1).foregroundStyle(Theme.textTertiary)
             Text(value)
-                .font(.rounded(16, .bold)).monospacedDigit()
+                .font(.display(16, .bold)).monospacedDigit()
                 .foregroundStyle(color)
                 .lineLimit(1).minimumScaleFactor(0.7)
         }
@@ -122,7 +122,7 @@ struct MetricDetailView: View {
 
     private func trendColor(_ trend: Double?) -> Color {
         guard let trend, let better = metric.higherIsBetter, abs(trend) > 0.0001 else { return Theme.textPrimary }
-        return (trend > 0) == better ? Theme.mint : Theme.amber
+        return (trend > 0) == better ? Theme.ink : Theme.ink
     }
 
     private func label(for date: Date) -> String {

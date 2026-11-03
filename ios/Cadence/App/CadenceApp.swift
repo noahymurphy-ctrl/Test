@@ -10,7 +10,7 @@ struct CadenceApp: App {
             RootView()
                 .environment(model)
                 .preferredColorScheme(.dark)
-                .tint(Theme.aqua)
+                .tint(Theme.ink)
         }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active, model.hasOnboarded else { return }

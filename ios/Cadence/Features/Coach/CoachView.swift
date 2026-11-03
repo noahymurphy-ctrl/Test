@@ -11,7 +11,7 @@ struct CoachView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                AppBackground(accent: Color(red: 0.85, green: 0.52, blue: 0.36))
+                AppBackground(accent: Theme.ink)
                 ScrollViewReader { proxy in
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 22) {
@@ -61,11 +61,11 @@ struct CoachView: View {
         VStack(alignment: .leading, spacing: 26) {
             VStack(alignment: .leading, spacing: 14) {
                 ZStack {
-                    Circle().fill(Theme.claudeGradient).opacity(0.18).frame(width: 64, height: 64).blur(radius: 6)
+                    Circle().fill(Theme.chrome).opacity(0.18).frame(width: 64, height: 64).blur(radius: 6)
                     ClaudeSpark(size: 30, animating: true)
                 }
                 Text("Ask anything about\nyour health data.")
-                    .font(.rounded(28, .bold))
+                    .font(.display(28, .bold))
                     .foregroundStyle(Theme.textPrimary)
                 Text("Claude sees your last 30 days of sleep, recovery, heart and activity data from Fitbit.")
                     .font(.subheadline)
@@ -75,7 +75,7 @@ struct CoachView: View {
 
             if !model.hasClaudeKey {
                 Button("Add your Claude API key") { model.showSettings = true }
-                    .buttonStyle(PrimaryButtonStyle(gradient: Theme.claudeGradient))
+                    .buttonStyle(PrimaryButtonStyle(gradient: Theme.chrome))
             }
 
             VStack(alignment: .leading, spacing: 10) {
@@ -121,7 +121,7 @@ struct CoachView: View {
                     .font(.system(size: 15, weight: .bold))
                     .foregroundStyle(.black)
                     .frame(width: 36, height: 36)
-                    .background(canSend || coach.isResponding ? AnyShapeStyle(Theme.claudeGradient) : AnyShapeStyle(Color.white.opacity(0.15)), in: Circle())
+                    .background(canSend || coach.isResponding ? AnyShapeStyle(Theme.chrome) : AnyShapeStyle(Color.white.opacity(0.15)), in: Circle())
                     .contentTransition(.symbolEffect(.replace))
             }
             .disabled(!canSend && !coach.isResponding)
@@ -177,7 +177,7 @@ private struct MessageView: View {
                 } else if message.failed {
                     Label(message.text, systemImage: "exclamationmark.triangle.fill")
                         .font(.subheadline)
-                        .foregroundStyle(Theme.amber)
+                        .foregroundStyle(Theme.ink)
                 } else {
                     MarkdownText(text: message.text)
                 }
@@ -200,7 +200,7 @@ private struct ThinkingIndicator: View {
                         ForEach(0..<3) { i in
                             let wave = sin(t - Double(i) * 0.9)
                             Circle()
-                                .fill(Theme.claudeGradient)
+                                .fill(Theme.chrome)
                                 .frame(width: 7, height: 7)
                                 .scaleEffect(1 + 0.3 * wave)
                                 .opacity(0.55 + 0.45 * wave)
