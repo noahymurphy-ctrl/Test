@@ -18,9 +18,9 @@ struct HabitCapsule: View {
             ZStack(alignment: .leading) {
                 Theme.paper
                 label(inverted: false)
-                sweep(w: w, h: h).fill(Theme.ink)
+                sweep(w: w, h: h, color: Theme.ink)
                 label(inverted: true)
-                    .mask(alignment: .leading) { sweep(w: w, h: h) }
+                    .mask(alignment: .leading) { sweep(w: w, h: h, color: .black) }
             }
             .clipShape(Capsule())
             .overlay(Capsule().strokeBorder(Theme.ink, lineWidth: 2))
@@ -38,8 +38,9 @@ struct HabitCapsule: View {
     }
 
     /// A capsule wider than the row by one height, sliding in so its round end leads.
-    private func sweep(w: CGFloat, h: CGFloat) -> some View {
+    private func sweep(w: CGFloat, h: CGFloat, color: Color) -> some View {
         Capsule()
+            .fill(color)
             .frame(width: w + h, height: h)
             .offset(x: (fill - 1) * (w + h))
     }
