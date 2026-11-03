@@ -1,3 +1,18 @@
+# Glow — habits that feel good ✨
+
+A habit tracker PWA at **`/Test/habits/`** (source in `src/habits/`, entry `habits/index.html`).
+
+**Live:** https://noahymurphy-ctrl.github.io/Test/habits/
+
+- Each habit is a glass orb: **press and hold** to fill it with liquid, with haptic ticks that speed up, then a pop, particles and sound. Hold a full orb to drain it.
+- Multi-count habits (e.g. 8 glasses of water), custom schedules, 8 colors, emoji icons
+- Streaks, best streak, perfect-day confetti, milestone celebrations (3, 7, 14, 30… days)
+- Week strip for catching up on past days, per-habit calendar + heatmap, Progress tab
+- Haptics on iPhone (iOS 18+) and Android; synthesized sounds; light/dark; works offline; JSON backup
+- Regenerate icons: `node scripts/make-habit-icons.mjs`
+
+---
+
 # Evenly — family money, all square 💜
 
 A PWA for keeping track of who owes who in the family. Lives at **`/Test/ledger/`** (source in `src/ledger/`, entry `ledger/index.html`); the rest of this repo is unrelated sites.

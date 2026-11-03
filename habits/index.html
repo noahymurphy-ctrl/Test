@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Glow</title>
+    <meta name="description" content="A habit tracker that feels good to use. Hold to fill, watch it glow." />
+    <meta name="theme-color" content="#07060d" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Glow" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/habits/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/habits/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/habits/icons/apple-touch-icon.png" />
+    <script>
+      // Apply theme before first paint to avoid a flash.
+      try {
+        var t = (JSON.parse(localStorage.getItem('glow.v1') || '{}').settings || {}).theme || 'system'
+        if (t === 'light' || (t === 'system' && matchMedia('(prefers-color-scheme: light)').matches))
+          document.documentElement.classList.add('light')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/habits/main.jsx"></script>
+  </body>
+</html>

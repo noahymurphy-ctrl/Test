@@ -8,17 +8,17 @@ import { readFileSync } from 'node:fs'
 const root = fileURLToPath(new URL('.', import.meta.url))
 
 /**
- * Emits ledger/sw.js at build time with the exact list of hashed files the
- * Evenly app needs, so the app works fully offline after the first launch.
+ * Emits <dir>/sw.js at build time with the exact list of hashed files an app
+ * needs, so it works fully offline after the first launch.
  */
-function evenlyServiceWorker() {
+function appServiceWorker(dir, template) {
   return {
-    name: 'evenly-service-worker',
+    name: `${dir}-service-worker`,
     apply: 'build',
     generateBundle(_, bundle) {
       const files = new Set()
       const entry = Object.values(bundle).find(
-        (c) => c.type === 'chunk' && c.isEntry && c.facadeModuleId?.includes('ledger'),
+        (c) => c.type === 'chunk' && c.isEntry && c.facadeModuleId?.endsWith(`/${dir}/index.html`),
       )
       if (!entry) return
       const visit = (name) => {
@@ -31,13 +31,12 @@ function evenlyServiceWorker() {
         c.viteMetadata?.importedAssets?.forEach((f) => files.add(f))
       }
       visit(entry.fileName)
-      const precache = ['ledger/', 'ledger/manifest.webmanifest', 'ledger/icons/icon-192.png', 'ledger/icons/apple-touch-icon.png', ...files]
+      const precache = [`${dir}/`, `${dir}/manifest.webmanifest`, `${dir}/icons/icon-192.png`, `${dir}/icons/apple-touch-icon.png`, ...files]
       const version = createHash('sha256').update(precache.join('|')).digest('hex').slice(0, 10)
-      const template = readFileSync(`${root}src/ledger/sw-template.js`, 'utf8')
       this.emitFile({
         type: 'asset',
-        fileName: 'ledger/sw.js',
-        source: template
+        fileName: `${dir}/sw.js`,
+        source: readFileSync(`${root}${template}`, 'utf8')
           .replace('__VERSION__', version)
           .replace('__PRECACHE__', JSON.stringify(precache)),
       })
@@ -46,7 +45,12 @@ function evenlyServiceWorker() {
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), evenlyServiceWorker()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    appServiceWorker('ledger', 'src/ledger/sw-template.js'),
+    appServiceWorker('habits', 'src/habits/sw-template.js'),
+  ],
   base: '/Test/',
   build: {
     chunkSizeWarningLimit: 700,
@@ -54,6 +58,7 @@ export default defineConfig({
       input: {
         main: `${root}index.html`,
         ledger: `${root}ledger/index.html`,
+        habits: `${root}habits/index.html`,
       },
     },
   },
