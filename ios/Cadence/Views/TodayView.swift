@@ -1,6 +1,7 @@
 import Combine
 import SwiftData
 import SwiftUI
+import UIKit
 
 struct TodayView: View {
     @Environment(\.modelContext) private var context
@@ -119,7 +120,7 @@ struct TodayView: View {
                     .zIndex(dragID == habit.id ? 1 : 0)
                     .animation(Tuning.Motion.press, value: pressedID == habit.id)
                     .animation(Tuning.Motion.press, value: dragID == habit.id)
-                    .gesture(gesture(for: habit, index: i, rows: rows))
+                    .gesture(rowGesture(habit, index: i, rows: rows))
                     .accessibilityAction { toggle(habit) }
                     .accessibilityAction(named: "History") { detail = habit }
                 }
@@ -137,7 +138,7 @@ struct TodayView: View {
 
     // MARK: Interaction
 
-    private func gesture(for habit: Habit, index: Int, rows: [Habit]) -> some Gesture {
+    private func rowGesture(_ habit: Habit, index: Int, rows: [Habit]) -> some Gesture {
         let hold = LongPressGesture(minimumDuration: Tuning.Gesture.longPress)
             .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .global))
             .updating($pressedID) { _, state, _ in state = habit.id }

@@ -83,7 +83,7 @@ struct HabitEditor: View {
         .onAppear { if habit == nil { nameFocused = true } }
     }
 
-    private func section(_ title: String, @ViewBuilder _ content: () -> some View) -> some View {
+    private func section<C: View>(_ title: String, @ViewBuilder _ content: () -> C) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Readout(title)
             content()
