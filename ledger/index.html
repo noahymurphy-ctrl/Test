@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Evenly</title>
+    <meta name="description" content="Who owes who, sorted. A friendly family money tracker." />
+    <meta name="theme-color" content="#F5F4FA" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0C0B12" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Evenly" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/ledger/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ledger/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/ledger/icons/apple-touch-icon.png" />
+    <script>
+      // Apply theme before first paint to avoid a flash.
+      try {
+        var p = JSON.parse(localStorage.getItem('evenly.local') || '{}').theme || 'system'
+        var d = p === 'dark' || (p === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        if (d) document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/ledger/main.jsx"></script>
+  </body>
+</html>
