@@ -99,7 +99,7 @@ export function MemberEditor({ initial = {}, onSave, submitLabel = 'Save', autoF
             key={c}
             onClick={() => setColor(c)}
             className={`press h-8 w-8 rounded-full transition-shadow ${color === c ? 'ring-[3px] ring-accent ring-offset-2 ring-offset-bg' : ''}`}
-            style={{ background: c }}
+            style={{ background: `color-mix(in srgb, ${c} var(--tint), var(--card))` }}
             aria-label="Color"
           />
         ))}

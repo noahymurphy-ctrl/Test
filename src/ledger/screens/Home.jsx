@@ -64,12 +64,12 @@ export default function Home() {
           </div>
           <div className="text-[15px] font-medium opacity-90">{heroSub}</div>
           <div className="mt-5 grid grid-cols-2 gap-2.5">
-            <button onClick={() => nav.openComposer()} className="press flex h-12 items-center justify-center gap-2 rounded-2xl bg-white/25 text-[16px] font-bold backdrop-blur-md">
+            <button onClick={() => nav.openComposer()} className="press flex h-12 items-center justify-center gap-2 rounded-2xl bg-white/25 text-[16px] font-bold backdrop-blur-md dark:bg-white/15">
               <Plus size={20} strokeWidth={2.8} /> Add
             </button>
             <button
               onClick={() => nav.openComposer(mine[0] ? { mode: 'settle', from: mine[0].from, to: mine[0].to, amount: mine[0].amount, step: 2 } : { mode: 'settle' })}
-              className="press flex h-12 items-center justify-center gap-2 rounded-2xl bg-white text-[16px] font-bold text-[#1d1638]"
+              className="press flex h-12 items-center justify-center gap-2 rounded-2xl bg-white text-[16px] font-bold text-[#1d1638] dark:bg-white/90"
             >
               <Handshake size={20} strokeWidth={2.4} /> Settle up
             </button>

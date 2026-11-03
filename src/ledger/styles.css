@@ -24,6 +24,7 @@
   --sat: env(safe-area-inset-top);
   --sab: env(safe-area-inset-bottom);
   --kb: 0px;
+  --tint: 100%;
   color-scheme: light;
 }
 
@@ -45,6 +46,7 @@
   --neg-soft: rgba(255, 107, 139, 0.14);
   --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px -10px rgba(0, 0, 0, 0.6);
   --glass: rgba(12, 11, 18, 0.72);
+  --tint: 84%;
   color-scheme: dark;
 }
 
@@ -291,6 +293,28 @@ select {
 }
 .hero-owe {
   background: linear-gradient(135deg, #ff5f7e 0%, #ff7a59 55%, #ffb03a 100%);
+}
+/* Dark mode: deeper, jewel-toned cards that glow instead of glare. */
+.dark .hero-even {
+  background: linear-gradient(135deg, #3f31c9 0%, #6c2fc4 55%, #a8327a 100%);
+}
+.dark .hero-owed {
+  background: linear-gradient(135deg, #07704f 0%, #0a7f72 55%, #155f9a 100%);
+}
+.dark .hero-owe {
+  background: linear-gradient(135deg, #a8304b 0%, #b04634 55%, #a86a17 100%);
+}
+.dark .hero::before {
+  opacity: 0.25;
+}
+.dark .hero::after {
+  opacity: 0.15;
+}
+.dark .hero {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset, 0 20px 50px -24px rgba(120, 90, 255, 0.45);
+}
+.dark .card {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 8px 24px -12px rgba(0, 0, 0, 0.7);
 }
 @keyframes drift {
   to {

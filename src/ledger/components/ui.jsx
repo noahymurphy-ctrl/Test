@@ -9,7 +9,7 @@ export function Avatar({ member, size = 44, ring = false, className = '' }) {
   return (
     <div
       className={`relative grid shrink-0 place-items-center rounded-full ${ring ? 'ring-[3px] ring-accent ring-offset-2 ring-offset-bg' : ''} ${className}`}
-      style={{ width: size, height: size, background: m.color, fontSize: size * 0.52, lineHeight: 1 }}
+      style={{ width: size, height: size, background: `color-mix(in srgb, ${m.color} var(--tint), var(--card))`, fontSize: size * 0.52, lineHeight: 1 }}
       aria-hidden
     >
       <span style={{ transform: 'translateY(4%)' }}>{m.emoji}</span>
@@ -231,12 +231,12 @@ export function Toaster() {
   return createPortal(
     <div className="pointer-events-none fixed inset-x-0 z-[80] flex flex-col items-center gap-2 px-4 bottom-[calc(var(--sab)+96px)] md:bottom-8">
       {toasts.map((t) => (
-        <div key={t.id} className="pop pointer-events-auto flex max-w-[420px] items-center gap-3 rounded-2xl bg-ink py-3 pr-3 pl-4 text-[15px] font-medium text-bg shadow-2xl">
+        <div key={t.id} className="pop pointer-events-auto flex max-w-[420px] items-center gap-3 rounded-2xl bg-ink py-3 pr-3 pl-4 text-[15px] font-medium text-bg shadow-2xl dark:bg-[#2b2740] dark:text-ink dark:ring-1 dark:ring-white/10">
           {t.icon && <span className="text-[18px]">{t.icon}</span>}
           <span className="flex-1">{t.message}</span>
           {t.action && (
             <button
-              className="rounded-xl px-3 py-1.5 font-bold text-[#b9afff] dark:text-[#5b4bff]"
+              className="rounded-xl px-3 py-1.5 font-bold text-[#b9afff]"
               onClick={() => {
                 t.onAction?.()
                 dismissToast(t.id)
