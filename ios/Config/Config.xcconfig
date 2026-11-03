@@ -1,0 +1,9 @@
+// Cadence build configuration.
+//
+// 1. Set your Apple developer team and a unique bundle identifier.
+// 2. Paste the iOS OAuth client ID you create in Google Cloud (see ios/README.md).
+//    It looks like 1234567890-abc123.apps.googleusercontent.com
+
+DEVELOPMENT_TEAM =
+PRODUCT_BUNDLE_IDENTIFIER = com.example.cadence
+GOOGLE_CLIENT_ID = YOUR_CLIENT_ID.apps.googleusercontent.com
