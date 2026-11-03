@@ -42,7 +42,7 @@ final class InteractionTests: XCTestCase {
         let water = habit("Drink water"), phone = habit("No phone in bed"), meditate = habit("Meditate")
         XCTAssertTrue(water.waitForExistence(timeout: 5))
         XCTAssertLessThan(water.frame.minY, meditate.frame.minY)
-        water.press(forDuration: 0.6, thenDragTo: phone)
+        water.press(forDuration: 0.6, thenDragTo: phone, withVelocity: .slow, thenHoldForDuration: 0.3)
         let moved = NSPredicate { _, _ in water.frame.minY > meditate.frame.minY }
         wait(for: [expectation(for: moved, evaluatedWith: nil)], timeout: 3)
         // Not opened as history.

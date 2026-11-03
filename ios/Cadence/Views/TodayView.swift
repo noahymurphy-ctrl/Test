@@ -18,6 +18,8 @@ struct TodayView: View {
     @State private var dragStart = 0
     @State private var dragTarget = 0
     @State private var dragY: CGFloat = 0
+    /// Set once a hold engages, so lifting the finger afterwards doesn't also count as a tap.
+    @State private var holdEngaged = false
 
     /// Sorted locally (not via @Query) so sortOrder edits re-render in the same transaction.
     private var ordered: [Habit] { habits.sorted { $0.sortOrder < $1.sortOrder } }
@@ -44,7 +46,16 @@ struct TodayView: View {
             .sheet(isPresented: $showingNew) { HabitEditor(habit: nil, nextOrder: (ordered.last?.sortOrder ?? -1) + 1) }
         }
         .tint(Theme.ink)
-        .onChange(of: pressedID) { _, id in if id != nil { Haptics.warmUp() } }
+        .onChange(of: pressedID) { _, id in
+            if id != nil {
+                holdEngaged = false
+                Haptics.warmUp()
+            } else {
+                // If the system cancelled the gesture mid-drag, onEnded never runs. Give it one
+                // turn of the run loop, then commit whatever order is showing.
+                DispatchQueue.main.async { if dragID != nil { commitDrag(scheduled) } }
+            }
+        }
         .onChange(of: scenePhase) { _, phase in if phase == .active { refreshDay() } }
         .onReceive(dayChanges) { _ in refreshDay() }
         .task { openForScreenshots() }
@@ -120,7 +131,8 @@ struct TodayView: View {
                     .zIndex(dragID == habit.id ? 1 : 0)
                     .animation(Tuning.Motion.press, value: pressedID == habit.id)
                     .animation(Tuning.Motion.press, value: dragID == habit.id)
-                    .gesture(rowGesture(habit, index: i, rows: rows))
+                    .onTapGesture { if !holdEngaged { toggle(habit) } }
+                    .simultaneousGesture(holdGesture(habit, index: i, rows: rows))
                     .accessibilityAction { toggle(habit) }
                     .accessibilityAction(named: "History") { detail = habit }
                 }
@@ -138,17 +150,18 @@ struct TodayView: View {
 
     // MARK: Interaction
 
-    private func rowGesture(_ habit: Habit, index: Int, rows: [Habit]) -> some Gesture {
-        let hold = LongPressGesture(minimumDuration: Tuning.Gesture.longPress)
+    private func holdGesture(_ habit: Habit, index: Int, rows: [Habit]) -> some Gesture {
+        LongPressGesture(minimumDuration: Tuning.Gesture.longPress)
             .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .global))
             .updating($pressedID) { _, state, _ in state = habit.id }
             .onChanged { value in
                 guard case .second(true, let drag) = value else { return }
+                holdEngaged = true
                 if dragID == nil { beginDrag(habit.id, at: index) }
                 if let drag { moveDrag(drag.translation.height, count: rows.count) }
             }
             .onEnded { value in
-                guard case .second(true, let drag) = value else { return }
+                guard case .second(true, let drag) = value, dragID == habit.id else { return }
                 let moved = abs(drag?.translation.height ?? 0)
                 if moved < Tuning.Gesture.openSlop && dragTarget == dragStart {
                     resetDrag()
@@ -157,8 +170,6 @@ struct TodayView: View {
                     commitDrag(rows)
                 }
             }
-        let tap = TapGesture().onEnded { toggle(habit) }
-        return hold.exclusively(before: tap)
     }
 
     private func toggle(_ habit: Habit) {
@@ -201,6 +212,7 @@ struct TodayView: View {
     }
 
     private func commitDrag(_ rows: [Habit]) {
+        guard dragID != nil, rows.indices.contains(dragStart), rows.indices.contains(dragTarget) else { return resetDrag() }
         var visible = rows
         visible.move(fromOffsets: IndexSet(integer: dragStart), toOffset: dragTarget > dragStart ? dragTarget + 1 : dragTarget)
         // Write the new visible order back into the slots those habits held in the full list,

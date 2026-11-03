@@ -43,6 +43,7 @@ struct HabitCapsule: View {
             .fill(color)
             .frame(width: w + h, height: h)
             .offset(x: (fill - 1) * (w + h))
+            .frame(width: w, height: h, alignment: .leading) // keep the oversize shape out of layout
     }
 
     private func label(inverted: Bool) -> some View {
