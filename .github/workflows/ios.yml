@@ -1,0 +1,94 @@
+name: iOS
+
+on:
+  push:
+    paths: ["ios/**", ".github/workflows/ios.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pick simulator
+        id: sim
+        run: |
+          xcodebuild -version | tee -a build-info.txt
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          devs = json.load(sys.stdin)["devices"]
+          ios = sorted((k for k in devs if "iOS" in k), key=lambda k: [int(x) for x in k.split("iOS-")[1].split("-")])
+          for rt in reversed(ios):
+              for d in devs[rt]:
+                  if d["name"].startswith("iPhone") and "Pro" in d["name"] and "Max" not in d["name"]:
+                      print(d["udid"]); sys.exit()
+          ')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl list devices | grep "$UDID" | tee -a build-info.txt
+
+      - name: Build and test
+        working-directory: ios
+        run: |
+          set -o pipefail
+          mkdir -p ../out
+          xcodebuild test \
+            -project Cadence.xcodeproj -scheme Cadence \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath ../dd \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee ../out/xcodebuild.log | grep -E "error:|warning: .*\.swift|Test Case .*(passed|failed)|\*\* (BUILD|TEST)" || true
+          grep -q "\*\* TEST SUCCEEDED \*\*" ../out/xcodebuild.log
+
+      - name: Screenshots
+        if: always()
+        run: |
+          UDID=${{ steps.sim.outputs.udid }}
+          APP=$(find dd/Build/Products -name Cadence.app -path "*iphonesimulator*" | head -1)
+          [ -z "$APP" ] && { echo "no app built"; exit 0; }
+          xcrun simctl boot "$UDID" 2>/dev/null || true
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+          xcrun simctl install "$UDID" "$APP"
+          shoot() { # name, appearance, args...
+            local name=$1 look=$2; shift 2
+            xcrun simctl ui "$UDID" appearance "$look"
+            xcrun simctl terminate "$UDID" com.noahmurphy.cadence 2>/dev/null || true
+            xcrun simctl launch "$UDID" com.noahmurphy.cadence "$@"
+            sleep 4
+            xcrun simctl io "$UDID" screenshot "out/$name.png"
+          }
+          shoot today-light light -seed
+          shoot today-dark dark -seed
+          shoot detail-light light -seed -detail
+          shoot detail-dark dark -seed -detail
+          shoot new-light light -seed -new
+          shoot empty-light light -uitest
+
+      - name: Publish results to ios-ci-output branch
+        if: always()
+        run: |
+          cp build-info.txt out/ 2>/dev/null || true
+          tail -200 out/xcodebuild.log > out/xcodebuild-tail.log 2>/dev/null || true
+          grep -E "error:|Test Case|\*\* (BUILD|TEST)" out/xcodebuild.log > out/summary.log 2>/dev/null || true
+          rm -f out/xcodebuild.log
+          cd out
+          git init -q -b ios-ci-output
+          git config user.name "ci" && git config user.email "ci@users.noreply.github.com"
+          echo "${{ github.sha }} ${{ github.ref_name }}" > COMMIT
+          git add -A && git commit -qm "CI output for ${{ github.sha }}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" ios-ci-output
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ios-output
+          path: out
