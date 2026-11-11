@@ -33,6 +33,7 @@
     background: var(--panel); color: var(--text); cursor: pointer; border: 1px solid var(--line);
   }
   button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 9px 8px; font: inherit; font-weight: 600; }
   button:disabled { opacity: .35; cursor: default; }
   .toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; font-weight: 600; }
   .toggle input { position: absolute; opacity: 0; pointer-events: none; }
@@ -69,6 +70,7 @@
     <input type="checkbox" id="data" checked />
     <span class="track"></span><span>Data</span>
   </label>
+  <select id="fmt" aria-label="Format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select>
   <button id="open">Open</button>
   <button id="share" class="primary" hidden disabled>Share</button>
   <button id="save" class="primary" disabled>Save</button>
@@ -107,7 +109,6 @@ const LINE2_Y = 76       // line 2 centre, below the photo
 const FOOT = 128         // space below the photo when data is shown
 const FONT = 22          // text size
 const COL2 = 0.6         // right column starts at 60% of the photo width
-const MAX_PIXELS = 16e6  // stay under mobile canvas limits
 
 const state = { img: null, name: 'photo', text: { l1: '', l2: '', r1: '', r2: '' } }
 const showData = () => $('data').checked
@@ -225,17 +226,21 @@ function refresh() {
   render(out, photoW, showData())
 }
 
-// Full-resolution export, capped to MAX_PIXELS total.
-function exportBlob(type = 'image/jpeg') {
-  const c = document.createElement('canvas')
+// Full native resolution, JPEG q=1.0 or lossless PNG. Only shrinks if the browser's canvas refuses the size.
+async function exportBlob() {
+  const type = $('fmt').value
   let photoW = state.img.naturalWidth
-  let L = layout(photoW, showData())
-  const px = L.W * L.H
-  if (px > MAX_PIXELS) photoW = Math.floor(photoW * Math.sqrt(MAX_PIXELS / px))
-  render(c, photoW, showData())
-  return new Promise((res) => c.toBlob(res, type, 0.95))
+  for (let i = 0; i < 8; i++) {
+    const c = document.createElement('canvas')
+    render(c, photoW, showData())
+    const blob = await new Promise((res) => { try { c.toBlob(res, type, 1) } catch (e) { res(null) } })
+    c.width = c.height = 0
+    if (blob && blob.type === type) return blob
+    photoW = Math.floor(photoW * 0.8)
+  }
+  throw new Error('export failed')
 }
-const outName = () => state.name.replace(/\.[^.]+$/, '') + '-framed.jpg'
+const outName = () => state.name.replace(/\.[^.]+$/, '') + '-framed.' + ($('fmt').value === 'image/png' ? 'png' : 'jpg')
 
 // ---- Loading ----
 async function load(file) {
@@ -280,7 +285,7 @@ if (canShareFiles()) {
   $('share').hidden = false
   $('share').onclick = async () => {
     const blob = await exportBlob()
-    try { await navigator.share({ files: [new File([blob], outName(), { type: 'image/jpeg' })] }) } catch (e) { /* cancelled */ }
+    try { await navigator.share({ files: [new File([blob], outName(), { type: blob.type })] }) } catch (e) { /* cancelled */ }
   }
 }
 
