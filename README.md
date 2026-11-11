@@ -72,3 +72,7 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Frame — photo print layout
+
+A static PWA at **`/Test/frame/`** (source in `public/frame/`, no build step). Puts a photo in a white frame with ISO / aperture / shutter / focal length / date and camera / lens read from EXIF. The **Data** toggle turns the text off and makes the margins equal on all four sides. Works offline; Save downloads a JPEG, Share uses the system share sheet where available.
