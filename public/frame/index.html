@@ -261,10 +261,20 @@ async function load(file) {
   try { await img.decode() } catch (e) { alert('Could not open that image.'); URL.revokeObjectURL(url); return }
   state.img = img; state.name = file.name || 'photo'; state.text = textFromExif(exif)
   $('f1').value = state.text.l1; $('f2').value = state.text.l2; $('f3').value = state.text.r1; $('f4').value = state.text.r2
-  const found = state.text.l1 || state.text.r1
-  $('note').hidden = !!found
-  $('note').textContent = 'No camera data found in this file (it may have been stripped by the app or share method). Use Edit text below, or pick the original from Photos.'
-  if (!found) $('edit').open = true
+  const miss = []
+  if (!exif.iso) miss.push('ISO')
+  if (!exif.fnumber) miss.push('aperture')
+  if (!exif.exposure) miss.push('shutter speed')
+  if (!exif.focal35 && !exif.focal) miss.push('focal length')
+  if (!state.text.l2) miss.push('date')
+  if (!exif.model) miss.push('camera')
+  if (!exif.lens) miss.push('lens')
+  const note = $('note')
+  note.hidden = !miss.length
+  note.textContent = miss.length === 7
+    ? 'No camera data found in this file (it may have been stripped by the app or share method). Pick the original from Photos, or fill it in under Edit text.'
+    : 'Missing from this photo: ' + miss.join(', ') + '. Those spots are left blank. Fill them in under Edit text if you want.'
+  if (miss.length) $('edit').open = true
   $('empty').style.display = 'none'; out.style.display = 'block'
   $('edit').hidden = false; $('save').disabled = false; $('share').disabled = false
   refresh()
