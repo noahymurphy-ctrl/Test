@@ -76,6 +76,7 @@
   <button id="save" class="primary" disabled>Save</button>
 </header>
 
+<div id="note" hidden style="padding:8px 16px;color:#ffd60a;background:#2a2410;font-size:13px"></div>
 <main id="stage">
   <div id="empty" role="button" tabindex="0">
     <strong>Choose a photo</strong>
@@ -115,15 +116,21 @@ const showData = () => $('data').checked
 
 // ---- Minimal EXIF reader (JPEG, HEIC, anything with an "Exif\0\0" TIFF block) ----
 function readExif(buf) {
-  const u8 = new Uint8Array(buf, 0, Math.min(buf.byteLength, 4 * 1024 * 1024))
-  let at = -1
-  for (let i = 0; i < u8.length - 8; i++) {
-    if (u8[i] === 0x45 && u8[i + 1] === 0x78 && u8[i + 2] === 0x69 && u8[i + 3] === 0x66 && u8[i + 4] === 0 && u8[i + 5] === 0) {
-      const a = u8[i + 6], b = u8[i + 7]
-      if ((a === 0x49 && b === 0x49) || (a === 0x4d && b === 0x4d)) { at = i + 6; break }
-    }
+  const u8 = new Uint8Array(buf, 0, Math.min(buf.byteLength, 8 * 1024 * 1024))
+  const isTiff = (i) => (u8[i] === 0x49 && u8[i + 1] === 0x49 && u8[i + 2] === 0x2a && u8[i + 3] === 0) || (u8[i] === 0x4d && u8[i + 1] === 0x4d && u8[i + 2] === 0 && u8[i + 3] === 0x2a)
+  const cands = []
+  for (let i = 0; i < u8.length - 12; i++) {
+    if (u8[i] === 0x45 && u8[i + 1] === 0x78 && u8[i + 2] === 0x69 && u8[i + 3] === 0x66 && u8[i + 4] === 0 && u8[i + 5] === 0 && isTiff(i + 6)) cands.push(i + 6)
   }
-  if (at < 0) return {}
+  if (!cands.length) for (let i = 0; i < u8.length - 12 && cands.length < 8; i++) if (isTiff(i)) cands.push(i) // HEIC / bare TIFF
+  for (const at of cands) {
+    let r = {}
+    try { r = parseTiff(buf, at) } catch (e) { /* try next */ }
+    if (r.iso || r.exposure || r.fnumber || r.model) return r
+  }
+  return {}
+}
+function parseTiff(buf, at) {
   const dv = new DataView(buf, at)
   const le = dv.getUint16(0) === 0x4949
   const u16 = (o) => dv.getUint16(o, le), u32 = (o) => dv.getUint32(o, le)
@@ -151,30 +158,30 @@ function readExif(buf) {
   }
   const first = u32(4)
   ifd(first, [0x010f, 0x0110, 0x8769])
+  if (first + 2 > dv.byteLength) return {}
   const exifPtr = (() => {
     const n = u16(first)
     for (let i = 0; i < n; i++) { const e = first + 2 + i * 12; if (u16(e) === 0x8769) return u32(e + 8) }
     return 0
   })()
-  if (exifPtr) ifd(exifPtr, [0x829a, 0x829d, 0x8827, 0x9003, 0x920a, 0xa405, 0xa434])
+  if (exifPtr) ifd(exifPtr, [0x829a, 0x829d, 0x8827, 0x8833, 0x9003, 0x920a, 0xa405, 0xa434])
   return {
-    make: tags[0x010f], model: tags[0x0110], exposure: tags[0x829a], fnumber: tags[0x829d], iso: tags[0x8827],
+    make: tags[0x010f], model: tags[0x0110], exposure: tags[0x829a], fnumber: tags[0x829d], iso: tags[0x8827] || tags[0x8833],
     date: tags[0x9003], focal: tags[0x920a], focal35: tags[0xa405], lens: tags[0xa434],
   }
 }
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-function textFromExif(x, file) {
+function textFromExif(x) {
   const bits = []
   if (x.iso) bits.push('ISO ' + x.iso)
   if (x.fnumber) bits.push('ƒ/' + (Math.round(x.fnumber * 10) / 10))
   if (x.exposure) bits.push(x.exposure >= 1 ? Math.round(x.exposure * 10) / 10 + 's' : '1/' + Math.round(1 / x.exposure) + 's')
-  const fl = x.focal35 || (x.focal && Math.round(x.focal))
+  const fl = x.focal35 || (x.focal && Math.round(x.focal * 10) / 10)
   if (fl) bits.push(fl + 'mm')
   let date = ''
   const m = /^(\d{4}):(\d\d):(\d\d)/.exec(x.date || '')
   if (m) date = `${+m[3]} ${MONTHS[+m[2] - 1]} ${m[1]}`
-  else if (file && file.lastModified) { const d = new Date(file.lastModified); date = `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}` }
   return { l1: bits.join(' | '), l2: date, r1: x.model || '', r2: x.lens || '' }
 }
 
@@ -252,8 +259,12 @@ async function load(file) {
   const img = new Image()
   img.src = url
   try { await img.decode() } catch (e) { alert('Could not open that image.'); URL.revokeObjectURL(url); return }
-  state.img = img; state.name = file.name || 'photo'; state.text = textFromExif(exif, file)
+  state.img = img; state.name = file.name || 'photo'; state.text = textFromExif(exif)
   $('f1').value = state.text.l1; $('f2').value = state.text.l2; $('f3').value = state.text.r1; $('f4').value = state.text.r2
+  const found = state.text.l1 || state.text.r1
+  $('note').hidden = !!found
+  $('note').textContent = 'No camera data found in this file (it may have been stripped by the app or share method). Use Edit text below, or pick the original from Photos.'
+  if (!found) $('edit').open = true
   $('empty').style.display = 'none'; out.style.display = 'block'
   $('edit').hidden = false; $('save').disabled = false; $('share').disabled = false
   refresh()
